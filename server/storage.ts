@@ -6,6 +6,7 @@ export interface IStorage {
   getArtists(): Promise<Artist[]>;
   getArtistBySlug(slug: string): Promise<Artist | undefined>;
   createArtist(artist: InsertArtist): Promise<Artist>;
+  clearArtists(): Promise<void>;
   createContactMessage(msg: InsertContact): Promise<ContactMessage>;
   getContactMessages(): Promise<ContactMessage[]>;
 }
@@ -23,6 +24,10 @@ export class DatabaseStorage implements IStorage {
   async createArtist(artist: InsertArtist): Promise<Artist> {
     const [created] = await db.insert(artists).values(artist).returning();
     return created;
+  }
+
+  async clearArtists(): Promise<void> {
+    await db.delete(artists);
   }
 
   async createContactMessage(msg: InsertContact): Promise<ContactMessage> {
