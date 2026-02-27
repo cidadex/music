@@ -76,23 +76,27 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 flex flex-col items-center justify-center text-center h-full mt-10">
+      <div className="container relative z-10 mx-auto px-4 flex flex-col items-center justify-center text-center h-full mt-20">
         
         {/* Modern Abstract Typography instead of Logo */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
+          className="relative max-w-5xl"
         >
-          <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ff4bd8] via-[#63c7ff] to-[#a1f65e] tracking-tighter leading-none mb-6 drop-shadow-[0_0_40px_rgba(255,75,216,0.3)] filter">
-            IGAPÓ
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tight leading-[1.1] mb-8 drop-shadow-2xl">
+            Distribuímos sua música nas principais plataformas de streaming.<br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4bd8] via-[#63c7ff] to-[#a1f65e]">
+              Desenvolvemos sua carreira com estratégia.
+            </span>
           </h1>
+
           <motion.div 
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1.5, delay: 0.5, ease: "anticipate" }}
-            className="h-1 w-full bg-white/20 rounded-full mb-6 origin-left overflow-hidden relative"
+            className="h-1 w-24 mx-auto bg-white/20 rounded-full mb-8 origin-center overflow-hidden relative"
           >
             <motion.div 
               animate={{ x: ["-100%", "200%"] }}
@@ -100,9 +104,21 @@ export function Hero() {
               className="absolute inset-y-0 w-1/3 bg-white"
             />
           </motion.div>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-light tracking-[0.3em] uppercase text-white/90 font-sans">
-            Music & Strategy
-          </h2>
+
+          <motion.div
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 1, delay: 0.6 }}
+          >
+            <p className="text-lg md:text-xl lg:text-2xl font-light text-gray-300 leading-snug max-w-4xl mx-auto space-y-3">
+              <span className="block font-medium text-white">A IGAPÓ MUSIC é um selo de distribuição que coloca o artista no centro.</span>
+              <span className="block">Mais do que subir faixas, estruturamos trajetórias.</span>
+              <span className="block">
+                <span className="font-semibold text-[#63c7ff]">Spotify, Apple Music, Deezer, YouTube, TikTok</span> e muito mais<br/>
+                <span className="text-[#a1f65e]">— com planejamento, transparência e visão de longo prazo.</span>
+              </span>
+            </p>
+          </motion.div>
         </motion.div>
 
         {/* Floating Abstract Element */}
