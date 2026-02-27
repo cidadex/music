@@ -1,28 +1,48 @@
 import { Link } from "wouter";
 import { ARTISTS } from "@/data/artists";
+import logoUrl from "@assets/WhatsApp_Image_2026-02-27_at_13.43.31_(1)_-_Editado_1772214168034.png";
 
 export function ArtistsPreview() {
   return (
-    <section id="artistas" className="py-20 bg-[#a1f65e] relative overflow-hidden">
-      {/* Background massive text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-        <h2 className="text-[25vw] font-black text-black/5 whitespace-nowrap uppercase tracking-tighter leading-none">
-          Artistas
-        </h2>
-      </div>
+    <section id="artistas" className="py-24 bg-[#a1f65e] relative overflow-hidden">
+      {/* Background Dots Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(#000000_2px,transparent_2px)] [background-size:24px_24px] opacity-[0.08] pointer-events-none"></div>
 
-      <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
-        <div className="mb-16">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter drop-shadow-md mb-6">
-            Artistas que crescem com a IGAPÓ MUSIC
-          </h2>
-          <p className="text-lg md:text-2xl text-black font-bold uppercase tracking-widest bg-[#a1f65e] inline-block px-4 py-2 mt-4 shadow-lg">
-            Cada projeto é único. Cada trajetória é construída com acompanhamento real.
-          </p>
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 text-left relative z-10">
+        
+        {/* Top Header Section: Split Layout */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-20 max-w-7xl mx-auto">
+          
+          {/* Left Column: Text */}
+          <div className="lg:w-1/2 flex flex-col gap-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-[#0b0c10] uppercase tracking-tighter leading-[0.9]">
+              Artistas <br/> que crescem <br/> com a
+            </h2>
+            <div className="flex gap-2 mb-2">
+               <span className="w-4 h-4 rounded-full bg-[#ff4bd8]"></span>
+               <span className="w-4 h-4 rounded-full bg-[#63c7ff]"></span>
+               <span className="w-4 h-4 rounded-full bg-[#0b0c10]"></span>
+            </div>
+            <p className="text-lg md:text-2xl text-[#0b0c10] font-bold uppercase tracking-widest border-l-4 border-[#ff4bd8] pl-6 py-2 bg-black/5">
+              Cada projeto é único. Cada trajetória é construída com acompanhamento real.
+            </p>
+          </div>
+
+          {/* Right Column: Large Logo */}
+          <div className="lg:w-1/2 flex justify-center lg:justify-end">
+            <img 
+              src={logoUrl} 
+              alt="IGAPÓ MUSIC" 
+              className="w-full max-w-sm md:max-w-md lg:max-w-lg object-contain drop-shadow-2xl mix-blend-color-burn transform lg:translate-x-8" 
+            />
+          </div>
         </div>
 
         {/* Dense Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-white p-[2px] gap-[2px] mx-auto max-w-6xl mb-12 shadow-2xl">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-[#0b0c10] p-[2px] gap-[2px] mx-auto max-w-7xl mb-16 shadow-2xl relative">
+          
+          {/* Decorative element behind grid */}
+          <div className="absolute -inset-4 border-2 border-[#0b0c10] -z-10 hidden md:block"></div>
           {ARTISTS.concat(ARTISTS).concat(ARTISTS).slice(0, 10).map((artist, i) => (
             <div key={i} className="relative aspect-square sm:aspect-[4/5] bg-black overflow-hidden group cursor-pointer">
               
