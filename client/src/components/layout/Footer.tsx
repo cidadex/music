@@ -1,9 +1,20 @@
 import { Instagram, Linkedin, Music2, Disc, Youtube, Facebook } from "lucide-react";
+import { useInstagram } from "@/hooks/useInstagram";
 import { useArtists } from "@/hooks/useArtists";
 
 export function Footer() {
+  const { data: instagramData } = useInstagram();
   const { data: artists = [] } = useArtists();
-  const feedImages = artists.slice(0, 6).map(a => a.image);
+
+  const instaPosts = instagramData?.posts ?? [];
+  const fallbackImages = artists.slice(0, 6).map(a => ({
+    id: String(a.id),
+    media_url: a.image,
+    permalink: "https://instagram.com/igapomusic",
+    caption: a.name,
+  }));
+
+  const feedItems = instaPosts.length > 0 ? instaPosts : fallbackImages;
 
   return (
     <footer id="contato" className="bg-[#0b0c10] pt-16 pb-8 border-t border-gray-900 text-white">
@@ -15,13 +26,28 @@ export function Footer() {
           @igapomusic
         </a>
 
-        {feedImages.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 mb-16 max-w-6xl mx-auto">
-            {feedImages.map((img, i) => (
-              <a key={i} href="https://instagram.com/igapomusic" target="_blank" rel="noopener noreferrer" className="relative aspect-square group overflow-hidden bg-gray-900 block" data-testid={`link-feed-image-${i}`}>
-                <img src={img} alt="Instagram feed" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal" />
-                <div className="absolute inset-0 bg-[#ff4bd8]/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <Instagram className="text-white w-8 h-8 drop-shadow-lg" />
+        {feedItems.length > 0 && (
+          <div className="grid grid-cols-3 gap-3 md:gap-4 mb-16 max-w-5xl mx-auto">
+            {feedItems.slice(0, 6).map((item, i) => (
+              <a
+                key={item.id}
+                href={item.permalink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative aspect-square group overflow-hidden rounded-lg bg-gray-900 block"
+                data-testid={`link-feed-image-${i}`}
+              >
+                <img
+                  src={item.media_url}
+                  alt={item.caption || "Instagram post"}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-12 h-12 rounded-full bg-[#ff4bd8]/80 backdrop-blur-sm flex items-center justify-center">
+                    <Instagram className="text-white w-6 h-6" />
+                  </div>
                 </div>
               </a>
             ))}

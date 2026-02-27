@@ -17,7 +17,7 @@ client/src/
     home/         - Hero, ArtistsPreview, Services, Positioning, Releases, Playlists, Cta
     layout/       - Navbar, Footer
     ui/           - shadcn/ui components
-  hooks/          - useArtists.ts (API data fetching)
+  hooks/          - useArtists.ts, useInstagram.ts (API data fetching)
   pages/          - home.tsx, artists.tsx, artist-detail.tsx
 server/
   db.ts           - PostgreSQL connection (node-postgres + Drizzle)
@@ -31,6 +31,7 @@ shared/
 - `GET /api/artists` - List all artists
 - `GET /api/artists/:slug` - Get single artist by slug
 - `POST /api/contact` - Submit contact form message
+- `GET /api/instagram` - Fetch latest 6 Instagram posts (requires INSTAGRAM_ACCESS_TOKEN env var)
 
 ## Database Tables
 - `artists` - id, slug, name, genre, short_bio, image, bio, latest_release, contact
@@ -43,7 +44,7 @@ shared/
 - Services section with Lucide icons
 - YouTube-backed playlists strip
 - Pulsing CTA button
-- Instagram feed mock in footer
+- Real Instagram feed in footer (2x3 grid, large images) with fallback to artist images
 - Shimmer hover effects on navbar links
 - Responsive design with mobile menu
 
