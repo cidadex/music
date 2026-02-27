@@ -36,7 +36,7 @@ export function Cta() {
           className="flex flex-col items-center"
         >
           <span className="text-sm font-bold tracking-[0.2em] uppercase mb-6 text-white/80">O próximo passo começa agora.</span>
-          <a href="#contato" className="inline-block px-12 py-5 bg-[#a1f65e] text-[#0b0c10] font-black text-lg md:text-xl uppercase tracking-widest rounded-sm hover:scale-110 hover:bg-white transition-all shadow-[0_0_40px_rgba(161,246,94,0.6)]">
+          <a href="#contato" className="inline-block px-12 py-5 bg-[#a1f65e] text-[#0b0c10] font-black text-lg md:text-xl uppercase tracking-widest rounded-sm hover:scale-110 hover:bg-white transition-all shadow-[0_0_40px_rgba(161,246,94,0.6)] animate-pulse hover:animate-none">
             Fale conosco!
           </a>
         </motion.div>
