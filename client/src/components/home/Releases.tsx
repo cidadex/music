@@ -31,7 +31,7 @@ export function Releases() {
                   />
                   
                   <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none p-6">
-                     <h4 className="text-4xl md:text-6xl lg:text-7xl font-serif italic font-bold text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] text-center leading-none">
+                     <h4 className="text-4xl md:text-6xl lg:text-7xl italic font-bold text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] text-center leading-none">
                        {(featuredArtist.latestRelease || '').split(' ').map((word: string, i: number) => (
                          <span key={i} className="block">{word}</span>
                        ))}

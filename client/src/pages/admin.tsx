@@ -56,7 +56,7 @@ export default function Admin() {
   return (
     <div className="min-h-screen bg-[#0b0c10] text-white p-8">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-2 font-['Outfit']">Admin</h1>
+        <h1 className="text-3xl font-bold mb-2">Admin</h1>
         <p className="text-gray-400 mb-8">Gerenciamento do banco de dados</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
