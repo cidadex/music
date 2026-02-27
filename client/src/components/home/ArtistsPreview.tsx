@@ -11,11 +11,11 @@ export function ArtistsPreview() {
       <div className="container mx-auto px-4 md:px-8 lg:px-16 text-left relative z-10">
         
         {/* Top Header Section: Split Layout */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-20 max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-20 max-w-[90rem] mx-auto">
           
           {/* Left Column: Text */}
           <div className="lg:w-1/2 flex flex-col gap-6">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-[#0b0c10] uppercase tracking-tighter leading-[0.9]">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-[#0b0c10] uppercase tracking-tighter leading-[0.9]">
               Artistas <br/> que crescem <br/> com a
             </h2>
             <div className="flex gap-2 mb-2">
@@ -23,17 +23,17 @@ export function ArtistsPreview() {
                <span className="w-4 h-4 rounded-full bg-[#63c7ff]"></span>
                <span className="w-4 h-4 rounded-full bg-[#0b0c10]"></span>
             </div>
-            <p className="text-lg md:text-2xl text-[#0b0c10] font-bold uppercase tracking-widest border-l-4 border-[#ff4bd8] pl-6 py-2 bg-black/5">
+            <p className="text-lg md:text-xl text-[#0b0c10] font-bold uppercase tracking-widest border-l-4 border-[#ff4bd8] pl-6 py-2">
               Cada projeto é único. Cada trajetória é construída com acompanhamento real.
             </p>
           </div>
 
           {/* Right Column: Large Logo */}
-          <div className="lg:w-1/2 flex justify-center lg:justify-end">
+          <div className="lg:w-1/2 flex justify-center lg:justify-end lg:pl-10">
             <img 
               src={logoUrl} 
               alt="IGAPÓ MUSIC" 
-              className="w-full max-w-sm md:max-w-md lg:max-w-lg object-contain drop-shadow-2xl mix-blend-color-burn transform lg:translate-x-8" 
+              className="w-full max-w-md lg:max-w-2xl object-contain drop-shadow-2xl mix-blend-color-burn" 
             />
           </div>
         </div>
