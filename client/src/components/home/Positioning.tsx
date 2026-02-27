@@ -12,23 +12,23 @@ export function Positioning() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           
           {/* Left Column: Huge Impact Typography */}
-          <div className="lg:col-span-6 relative">
+          <div className="lg:col-span-6 relative pr-0 lg:pr-8">
              <div className="absolute -left-12 top-0 w-1 h-full bg-gradient-to-b from-[#63c7ff] via-[#ff4bd8] to-[#a1f65e] hidden lg:block opacity-50" />
              <motion.h2 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl lg:text-[5.5rem] font-black tracking-tighter uppercase leading-[0.9] text-white"
+              className="text-4xl md:text-5xl lg:text-[4.5rem] xl:text-[5.5rem] font-black tracking-tighter uppercase leading-[1.1] text-white break-words"
             >
-              Acreditamos <br/>
-              no artista <br/>
-              <span className="text-[#a1f65e] block mt-2">antes do<br/> algoritmo.</span>
+              Acreditamos <br className="hidden md:block"/>
+              no artista <br className="hidden md:block"/>
+              <span className="text-[#a1f65e] block mt-2">antes do<br className="hidden md:block"/> algoritmo.</span>
             </motion.h2>
           </div>
 
           {/* Right Column: Spaced Text Blocks */}
-          <div className="lg:col-span-6 flex flex-col justify-center space-y-12">
+          <div className="lg:col-span-6 flex flex-col justify-center space-y-12 pl-0 lg:pl-8">
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
