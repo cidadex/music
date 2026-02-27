@@ -79,8 +79,8 @@
   --color-brand-magenta: hsl(var(--brand-magenta));
   --color-brand-lime: hsl(var(--brand-lime));
 
-  --font-sans: "Space Grotesk", system-ui, sans-serif;
-  --font-display: "Outfit", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-display: "Syne", system-ui, sans-serif;
 
   --animate-marquee: marquee 25s linear infinite;
   --animate-marquee-slow: marquee 40s linear infinite;
