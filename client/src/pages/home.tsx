@@ -4,10 +4,11 @@ import { ArtistsPreview } from "@/components/home/ArtistsPreview";
 import { Releases } from "@/components/home/Releases";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Music2, Youtube, Disc } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-black">
+    <div className="min-h-screen bg-[#0b0c10] text-white">
       <Navbar />
       <main>
         <Hero />
@@ -15,15 +16,28 @@ export default function Home() {
         <ArtistsPreview />
         <Releases />
         
-        {/* Strip Playlist */}
-        <section className="relative py-20 bg-card overflow-hidden border-y border-border">
-          <div className="absolute inset-0 opacity-5 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay"></div>
-          <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic">Escute nossas playlists</h2>
+        {/* Playlists Strip */}
+        <section className="relative py-24 bg-black overflow-hidden flex flex-col items-center justify-center">
+          {/* Background image placeholder */}
+          <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity">
+            <img src="https://images.unsplash.com/photo-1470229722913-7c090be5c520?q=80&w=2070&auto=format&fit=crop" alt="Concert" className="w-full h-full object-cover" />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-[#0b0c10] z-0"></div>
+          
+          <div className="container relative z-10 mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white m-0">
+              Escute nossas playlists
+            </h2>
             <div className="flex gap-4">
-              <div className="w-16 h-16 rounded-full bg-background border-2 border-border flex items-center justify-center text-primary hover:border-primary transition-colors cursor-pointer">SP</div>
-              <div className="w-16 h-16 rounded-full bg-background border-2 border-border flex items-center justify-center text-red-500 hover:border-red-500 transition-colors cursor-pointer">YT</div>
-              <div className="w-16 h-16 rounded-full bg-background border-2 border-border flex items-center justify-center text-cyan-400 hover:border-cyan-400 transition-colors cursor-pointer">DZ</div>
+              <a href="#" className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white text-black flex items-center justify-center hover:bg-[#ff4bd8] hover:text-white transition-colors">
+                <Music2 size={24} />
+              </a>
+              <a href="#" className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white text-black flex items-center justify-center hover:bg-[#ff4bd8] hover:text-white transition-colors">
+                <Youtube size={24} />
+              </a>
+              <a href="#" className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white text-black flex items-center justify-center hover:bg-[#ff4bd8] hover:text-white transition-colors">
+                <Disc size={24} />
+              </a>
             </div>
           </div>
         </section>

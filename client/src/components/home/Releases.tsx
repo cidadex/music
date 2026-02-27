@@ -1,38 +1,27 @@
-import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { ARTISTS } from "@/data/artists";
 
 export function Releases() {
   return (
-    <section id="novidades" className="py-24 bg-background relative z-10">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <section id="novidades" className="py-24 bg-[#0b0c10] text-white">
+      <div className="container mx-auto px-4 md:px-12 lg:px-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32">
           
           {/* Latest Releases */}
           <div>
-            <h3 className="text-3xl font-black mb-8 flex items-center gap-3">
-              <span className="w-4 h-4 bg-primary rounded-sm block"></span>
-              Últimos Lançamentos
+            <h3 className="text-2xl md:text-4xl font-bold mb-10 text-[#ff4bd8] leading-tight">
+              Últimos<br/>Lançamentos
             </h3>
             
-            <div className="bg-card border border-border p-6 rounded-2xl group hover:border-primary transition-colors">
-              <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-                <div className="w-full sm:w-48 aspect-square rounded-xl overflow-hidden relative shadow-lg">
-                  <img src={ARTISTS[0].image} alt="Release Cover" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                  <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-black pl-1 shadow-[0_0_20px_rgba(255,75,216,0.6)] opacity-0 group-hover:opacity-100 transition-all scale-75 group-hover:scale-100">
-                    <Play size={20} fill="currentColor" />
-                  </button>
-                </div>
-                <div className="flex-1 text-center sm:text-left">
-                  <span className="inline-block px-3 py-1 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full mb-3">
-                    Em destaque
-                  </span>
-                  <h4 className="text-2xl font-bold mb-2">{ARTISTS[0].latestRelease}</h4>
-                  <p className="text-muted-foreground mb-4">{ARTISTS[0].name}</p>
-                  <p className="text-sm text-muted-foreground/80 border-t border-border pt-4">
-                    Ouça agora no Spotify, Deezer, Apple Music e mais.
-                  </p>
+            <div className="mb-4">
+              <button className="flex items-center gap-2 px-6 py-2 bg-[#ff4bd8] text-white text-xs font-bold uppercase tracking-wider mb-8 hover:bg-[#e53bc0] transition-colors">
+                <Play size={14} fill="currentColor" /> Play
+              </button>
+              <div className="w-full aspect-square md:aspect-[4/3] bg-[#111] overflow-hidden shadow-2xl relative group">
+                <img src={ARTISTS[0].image} alt="Release Cover" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none">
+                   <h4 className="text-3xl md:text-5xl font-serif italic font-bold text-white drop-shadow-xl text-center px-4 leading-tight">{ARTISTS[0].latestRelease}</h4>
+                   <p className="text-white/80 font-medium tracking-widest uppercase mt-4 text-sm">{ARTISTS[0].name}</p>
                 </div>
               </div>
             </div>
@@ -40,38 +29,27 @@ export function Releases() {
 
           {/* Latest News */}
           <div>
-            <h3 className="text-3xl font-black mb-8 flex items-center gap-3">
-              <span className="w-4 h-4 bg-secondary rounded-sm block"></span>
-              Últimas Notícias
+            <h3 className="text-2xl md:text-4xl font-bold mb-10 text-[#ff4bd8] leading-tight">
+              Últimas<br/>Notícias
             </h3>
             
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-6 pt-2">
+              <h4 className="text-sm font-bold tracking-widest uppercase mb-4 text-white">Posts recentes</h4>
               {[
-                { date: "Hoje", title: "Cena trap do nordeste ganha destaque com novo projeto", tag: "Lançamento" },
-                { date: "Ontem", title: "Raffa Torres ultrapassa 5 milhões de streams no Spotify", tag: "Conquista" },
-                { date: "24 Jan", title: "Aldair Playboy grava novo DVD em apresentação gratuita", tag: "Agenda" }
+                { date: "5 de fevereiro de 2024", title: "Com clima de verão e energia feminina, novo talento lança single 'Solteira'" },
+                { date: "31 de janeiro de 2024", title: "'Casais Trocados': Artista ultrapassa 5 milhões de streams no Spotify e se destaca nos rankings nacionais" },
+                { date: "24 de janeiro de 2024", title: "Gravadora promove evento de gravação de DVD em apresentação gratuita no Pelourinho" },
+                { date: "10 de outubro de 2023", title: "Cena trap do nordeste: conheça o novo artista do time IGAPÓ" },
+                { date: "27 de setembro de 2023", title: "Com ela tudo é mais 'gostoso' no pagode: conheça nossa nova aposta" }
               ].map((news, i) => (
-                <motion.a 
-                  key={i}
-                  href="#"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex flex-col sm:flex-row gap-4 sm:items-center justify-between p-6 bg-card border border-border rounded-xl hover:border-secondary transition-colors group"
-                >
-                  <div className="flex-1">
-                    <span className="text-secondary text-xs font-bold uppercase tracking-wider mb-2 block">
-                      {news.tag}
-                    </span>
-                    <h4 className="text-lg font-bold group-hover:text-secondary transition-colors">
-                      {news.title}
-                    </h4>
-                  </div>
-                  <span className="text-sm font-medium text-muted-foreground whitespace-nowrap bg-background px-3 py-1 rounded-md">
+                <a key={i} href="#" className="block border-b border-gray-800 pb-5 group">
+                  <h5 className="text-sm md:text-base font-medium text-gray-300 group-hover:text-[#ff4bd8] transition-colors mb-2 leading-relaxed">
+                    {news.title}
+                  </h5>
+                  <span className="text-xs font-medium text-gray-500 block">
                     {news.date}
                   </span>
-                </motion.a>
+                </a>
               ))}
             </div>
           </div>
