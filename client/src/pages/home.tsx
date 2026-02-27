@@ -30,8 +30,8 @@ export default function Home() {
           </div>
           
           {/* Dark overlays to ensure text readability */}
-          <div className="absolute inset-0 bg-black/70 z-0"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-[#0b0c10] z-0"></div>
+          <div className="absolute inset-0 bg-black/30 z-0"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-[#0b0c10] z-0 opacity-70"></div>
           
           <div className="container relative z-10 mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
             <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white m-0 drop-shadow-xl">
