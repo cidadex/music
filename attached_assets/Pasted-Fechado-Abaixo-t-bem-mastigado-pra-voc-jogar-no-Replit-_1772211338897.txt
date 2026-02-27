@@ -1,0 +1,1135 @@
+Fechado. Abaixo tá **bem mastigado** pra você jogar no Replit: um layout **bem bonito** na pegada do Potência (faixas, hero com vídeo + letras gigantes ao fundo, seção de serviços com ícones, **grid de artistas com hover overlay** e **página de biografia do artista**), usando as **cores do IGAPÓ** (ciano + amarelo + magenta + verde-limão).
+
+Vou te entregar um template **100% estático** (HTML/CSS/JS) com navegação por hash (`#artistas`, `#artista/slug`) — simples, rápido e perfeito pra Replit.
+
+---
+
+## Estrutura de pastas (Replit)
+
+Crie assim:
+
+```
+/public
+  index.html
+  styles.css
+  app.js
+  /assets
+    logo.png        (troque pelo seu)
+    hero.mp4        (se quiser MP4, opcional)
+    artist-1.jpg
+    artist-2.jpg
+    ...
+```
+
+---
+
+## 1) `public/index.html`
+
+```html
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IGAPÓ MUSIC</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#home" aria-label="Ir para Home">
+        <img class="brand__logo" src="./assets/logo.png" alt="IGAPÓ MUSIC" />
+      </a>
+
+      <nav class="nav" aria-label="Menu principal">
+        <a class="nav__link" href="#home">Home</a>
+        <a class="nav__link" href="#quem-somos">Quem somos</a>
+        <a class="nav__link" href="#artistas">Artistas</a>
+        <a class="nav__link" href="#contato">Contato</a>
+      </nav>
+
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="#home">Home</a>
+      <a href="#quem-somos">Quem somos</a>
+      <a href="#artistas">Artistas</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </header>
+
+  <!-- VIEWS -->
+  <main id="app">
+    <!-- HOME VIEW -->
+    <section id="view-home" class="view view--active">
+
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <!-- background video (opcional) -->
+        <video class="hero__video" autoplay muted loop playsinline poster="./assets/hero-poster.jpg">
+          <source src="./assets/hero.mp4" type="video/mp4" />
+        </video>
+
+        <!-- overlays -->
+        <div class="hero__overlay"></div>
+
+        <!-- giant outline text -->
+        <div class="hero__typeLayer" aria-hidden="true">
+          <div class="outlineMarquee">
+            <span>IGAPÓ MUSIC • DISTRIBUIÇÃO • LANÇAMENTOS • IGAPÓ MUSIC •</span>
+            <span>IGAPÓ MUSIC • DISTRIBUIÇÃO • LANÇAMENTOS • IGAPÓ MUSIC •</span>
+          </div>
+        </div>
+
+        <div class="container hero__content">
+          <div class="hero__badge">
+            <span class="dot dot--cyan"></span>
+            <span class="dot dot--magenta"></span>
+            <span class="dot dot--yellow"></span>
+            <span class="dot dot--lime"></span>
+            <span class="hero__badgeText">Distribuição + estratégia</span>
+          </div>
+
+          <h1 class="hero__title">
+            Distribuímos sua música nas principais plataformas.<br />
+            <span class="gradientText">E desenvolvemos sua carreira com estratégia.</span>
+          </h1>
+
+          <p class="hero__subtitle">
+            A IGAPÓ MUSIC trabalha com visão de longo prazo: identidade, planejamento de lançamento,
+            acompanhamento e transparência.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#contato">Fale conosco</a>
+            <a class="btn btn--ghost" href="#artistas">Ver artistas</a>
+          </div>
+
+          <div class="hero__platforms">
+            <span>Spotify</span><span>Apple Music</span><span>Deezer</span><span>YouTube</span><span>TikTok</span>
+          </div>
+
+          <a class="scrollHint" href="#servicos" aria-label="Rolar para serviços">
+            <span class="scrollHint__icon">⌄</span>
+            <span class="scrollHint__text">scroll down</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="band band--dark" id="servicos">
+        <div class="container">
+          <h2 class="sectionTitle">Potencializando carreiras musicais</h2>
+
+          <div class="features">
+            <article class="feature">
+              <div class="feature__icon accent--magenta">▶</div>
+              <h3>Distribuição digital</h3>
+              <p>Entrega da sua música nas principais plataformas com organização e consistência.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature__icon accent--cyan">♫</div>
+              <h3>Planejamento de lançamento</h3>
+              <p>Estratégia por etapa: cronograma, assets, narrativa e execução.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature__icon accent--yellow">⟡</div>
+              <h3>Royalties transparentes</h3>
+              <p>Gestão clara, acompanhamento e visão de performance sem “mistério”.</p>
+            </article>
+
+            <article class="feature">
+              <div class="feature__icon accent--lime">◎</div>
+              <h3>Desenvolvimento artístico</h3>
+              <p>Direção de carreira e construção de presença com identidade.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARTISTS GRID (HOME PREVIEW) -->
+      <section class="band band--magenta" id="artistas">
+        <div class="container">
+          <div class="sectionHead">
+            <h2 class="sectionTitle sectionTitle--light">Nossos artistas</h2>
+            <a class="btn btn--light" href="#artistas-lista">Conheça todos</a>
+          </div>
+
+          <div id="artistsGridHome" class="artistGrid"></div>
+        </div>
+      </section>
+
+      <!-- RELEASES + NEWS -->
+      <section class="band band--dark" id="novidades">
+        <div class="container split">
+          <div class="card card--release">
+            <h3 class="cardTitle">Últimos Lançamentos</h3>
+            <div class="releaseBox">
+              <div class="releaseCover" style="background-image:url('./assets/artist-1.jpg');"></div>
+              <div class="releaseMeta">
+                <div class="releaseLabel">Em destaque</div>
+                <div class="releaseName">Single / EP</div>
+                <a class="btn btn--primary btn--small" href="#" target="_blank" rel="noreferrer">Play</a>
+              </div>
+            </div>
+            <p class="muted">Troque o link do botão “Play” pelo Spotify do lançamento.</p>
+          </div>
+
+          <div class="card card--news">
+            <h3 class="cardTitle">Últimas Notícias</h3>
+            <ul class="newsList">
+              <li><a href="#">Post exemplo: lançamento, bastidores, agenda e novidades.</a><span>Hoje</span></li>
+              <li><a href="#">Post exemplo: artista do time IGAPÓ, resultados e streams.</a><span>Ontem</span></li>
+              <li><a href="#">Post exemplo: making of, clipe e conteúdo vertical.</a><span>Semana</span></li>
+            </ul>
+            <p class="muted">Aqui pode virar blog depois (ou puxar do Instagram).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLAYLIST / VIDEO STRIP -->
+      <section class="strip">
+        <div class="strip__bg"></div>
+        <div class="container strip__content">
+          <h2>Escute nossas playlists</h2>
+          <div class="strip__icons">
+            <a href="#" aria-label="Spotify">Spotify</a>
+            <a href="#" aria-label="YouTube">YouTube</a>
+            <a href="#" aria-label="Deezer">Deezer</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER + SOCIAL -->
+      <footer class="footer" id="contato">
+        <div class="container footer__top">
+          <div>
+            <h3 class="footer__title">Siga a gente</h3>
+            <div class="social">
+              <a href="#" aria-label="Instagram" class="social__item">IG</a>
+              <a href="#" aria-label="TikTok" class="social__item">TT</a>
+              <a href="#" aria-label="YouTube" class="social__item">YT</a>
+              <a href="#" aria-label="Spotify" class="social__item">SP</a>
+            </div>
+          </div>
+
+          <form class="contact">
+            <div class="contact__grid">
+              <input placeholder="Seu nome" />
+              <input placeholder="WhatsApp" />
+              <input placeholder="Link do seu som (Spotify/YouTube)" />
+              <input placeholder="Cidade" />
+            </div>
+            <textarea placeholder="Conta rapidinho sobre seu momento e objetivo…"></textarea>
+            <button class="btn btn--primary" type="button">Enviar</button>
+            <p class="muted">Conecte isso depois em WhatsApp/Email/API.</p>
+          </form>
+        </div>
+
+        <div class="container footer__bottom">
+          <span>© <span id="year"></span> IGAPÓ MUSIC</span>
+          <span class="muted">Feito no Replit</span>
+        </div>
+      </footer>
+
+    </section>
+
+    <!-- ARTISTS LIST VIEW -->
+    <section id="view-artists" class="view">
+      <section class="pageHero">
+        <div class="container pageHero__inner">
+          <h1>Artistas</h1>
+          <p class="muted">Passe o mouse pra ver o efeito. Clique pra abrir a biografia.</p>
+        </div>
+      </section>
+
+      <section class="band band--dark">
+        <div class="container">
+          <div class="toolbar">
+            <input id="artistSearch" class="search" placeholder="Buscar artista…" />
+            <a class="btn btn--ghost" href="#home">Voltar</a>
+          </div>
+
+          <div id="artistsGridAll" class="artistGrid"></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ARTIST DETAIL VIEW -->
+    <section id="view-artist" class="view">
+      <section class="artistHero">
+        <div class="container artistHero__inner">
+          <a class="backLink" href="#artistas-lista">← voltar aos artistas</a>
+
+          <div class="artistTop">
+            <div class="artistAvatarWrap">
+              <img id="artistAvatar" class="artistAvatar" alt="" />
+            </div>
+
+            <div class="artistTop__meta">
+              <h1 id="artistName">Nome do Artista</h1>
+
+              <div class="artistBtns">
+                <a id="btnReleases" class="btn btn--primary btn--small" href="#" target="_blank" rel="noreferrer">Lançamentos</a>
+                <a id="btnProfile" class="btn btn--ghost btn--small" href="#" target="_blank" rel="noreferrer">Perfil</a>
+              </div>
+
+              <div class="artistSocial" id="artistSocial"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band band--dark">
+        <div class="container artistBody">
+          <div class="artistCol">
+            <h2>Biografia</h2>
+            <p id="artistBio"></p>
+
+            <h3 class="mt">Novidades</h3>
+            <p class="muted" id="artistNews"></p>
+          </div>
+
+          <aside class="artistAside">
+            <div class="contactCard">
+              <h3>Contato</h3>
+              <p class="muted" id="artistContact"></p>
+            </div>
+
+            <div class="photoCard">
+              <h3>Foto</h3>
+              <img id="artistPhoto" alt="" />
+            </div>
+          </aside>
+        </div>
+
+        <div class="container pager">
+          <a id="prevArtist" class="pager__btn" href="#">← Artista anterior</a>
+          <a id="nextArtist" class="pager__btn" href="#">Próximo artista →</a>
+        </div>
+      </section>
+    </section>
+
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
+```
+
+---
+
+## 2) `public/styles.css`
+
+```css
+:root{
+  /* IGAPÓ palette (base nos seus artes) */
+  --bg: #0b0c10;
+  --bg2:#11131a;
+  --text:#f4f7ff;
+  --muted:#a8b0c2;
+
+  --cyan:#63c7ff;
+  --yellow:#ffe95a;
+  --magenta:#ff4bd8;
+  --lime:#8cff5a;
+
+  --card:#121526cc;
+  --border:#2a2f44;
+
+  --radius:18px;
+  --shadow: 0 16px 60px rgba(0,0,0,.35);
+
+  --max: 1160px;
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family:var(--font); }
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; display:block; }
+
+.container{ width:min(var(--max), calc(100% - 40px)); margin-inline:auto; }
+
+.muted{ color:var(--muted); font-size:.95rem; line-height:1.55; }
+.mt{ margin-top:24px; }
+
+/* Topbar */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  background:linear-gradient(to bottom, rgba(10,11,16,.92), rgba(10,11,16,.55));
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.topbar__inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 0;
+}
+.brand{ display:flex; align-items:center; gap:12px; }
+.brand__logo{ height:34px; width:auto; filter: drop-shadow(0 10px 25px rgba(0,0,0,.5)); }
+
+.nav{ display:flex; gap:22px; align-items:center; }
+.nav__link{
+  font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  font-size:.78rem; opacity:.9; padding:10px 8px; border-radius:12px;
+}
+.nav__link:hover{ background:rgba(255,255,255,.06); opacity:1; }
+
+.burger{
+  display:none; border:0; background:transparent; cursor:pointer;
+  width:42px; height:42px; border-radius:12px;
+}
+.burger:hover{ background:rgba(255,255,255,.06); }
+.burger span{ display:block; height:2px; width:18px; background:#fff; margin:5px auto; opacity:.9; }
+
+.mobile-menu{
+  display:none;
+  padding:12px 20px 18px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.mobile-menu a{
+  display:block; padding:12px 8px; border-radius:12px;
+  font-weight:800; letter-spacing:.06em; text-transform:uppercase; font-size:.8rem;
+}
+.mobile-menu a:hover{ background:rgba(255,255,255,.06); }
+
+/* Views */
+.view{ display:none; }
+.view--active{ display:block; }
+
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:10px;
+  padding:14px 18px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.04);
+  color:#fff;
+  font-weight:900;
+  letter-spacing:.02em;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.22); }
+.btn--small{ padding:10px 14px; font-size:.9rem; }
+.btn--ghost{ background:transparent; }
+.btn--light{ background:#fff; color:#0b0c10; border-color:#fff; }
+.btn--primary{
+  border-color: transparent;
+  background: linear-gradient(90deg, var(--magenta), var(--cyan));
+}
+.btn--primary:hover{ filter:brightness(1.06); }
+
+.gradientText{
+  background: linear-gradient(90deg, var(--cyan), var(--yellow), var(--magenta));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height: 86vh;
+  display:flex;
+  align-items:stretch;
+  overflow:hidden;
+}
+.hero__video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  filter: saturate(1.05) contrast(1.02) brightness(.72);
+}
+.hero__overlay{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(900px 520px at 20% 30%, rgba(99,199,255,.20), transparent 60%),
+    radial-gradient(900px 520px at 70% 40%, rgba(255,75,216,.18), transparent 60%),
+    linear-gradient(to bottom, rgba(10,11,16,.55), rgba(10,11,16,.96));
+}
+.hero__typeLayer{ position:absolute; inset:0; pointer-events:none; opacity:.55; }
+.outlineMarquee{
+  position:absolute; left:-20%; top:26%;
+  width:140%;
+  display:flex; gap:40px;
+  transform: rotate(-8deg);
+  white-space:nowrap;
+}
+.outlineMarquee span{
+  font-weight:1000;
+  font-size: clamp(3.2rem, 10vw, 8rem);
+  letter-spacing:.08em;
+  color:transparent;
+  -webkit-text-stroke: 2px rgba(255,255,255,.13);
+  text-stroke: 2px rgba(255,255,255,.13);
+  animation: marquee 18s linear infinite;
+}
+.outlineMarquee span:nth-child(2){ animation-delay:-9s; opacity:.85; }
+@keyframes marquee{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-40%); }
+}
+.hero__content{
+  position:relative;
+  padding: 96px 0 48px;
+}
+.hero__badge{
+  display:inline-flex; align-items:center; gap:10px;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  padding:10px 14px;
+  border-radius:999px;
+  width: fit-content;
+}
+.dot{ width:10px; height:10px; border-radius:50%; }
+.dot--cyan{ background:var(--cyan); }
+.dot--magenta{ background:var(--magenta); }
+.dot--yellow{ background:var(--yellow); }
+.dot--lime{ background:var(--lime); }
+.hero__badgeText{ font-weight:900; letter-spacing:.03em; font-size:.88rem; opacity:.95; }
+
+.hero__title{
+  margin:18px 0 10px;
+  font-size: clamp(2rem, 4.2vw, 3.6rem);
+  line-height:1.05;
+  letter-spacing:-.03em;
+}
+.hero__subtitle{
+  margin: 0;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.hero__actions{ display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
+.hero__platforms{
+  margin-top:18px;
+  display:flex; gap:10px; flex-wrap:wrap;
+  opacity:.9;
+}
+.hero__platforms span{
+  padding:8px 10px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:999px;
+  background: rgba(255,255,255,.04);
+  font-weight:800;
+  font-size:.85rem;
+}
+
+.scrollHint{
+  margin-top:36px;
+  display:inline-flex; align-items:center; gap:10px;
+  opacity:.85;
+}
+.scrollHint__icon{
+  width:44px; height:44px;
+  border-radius:999px;
+  display:grid; place-items:center;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  animation: bob 1.3s ease-in-out infinite;
+}
+.scrollHint__text{ font-weight:800; letter-spacing:.08em; text-transform:uppercase; font-size:.75rem; }
+@keyframes bob{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(5px); }
+}
+
+/* Bands */
+.band{ padding: 72px 0; }
+.band--dark{ background: linear-gradient(to bottom, var(--bg), var(--bg2)); }
+.band--magenta{
+  background: radial-gradient(900px 520px at 20% 30%, rgba(255,75,216,.35), transparent 60%),
+              linear-gradient(to bottom, #ff34c7, #cb1fa6);
+}
+
+.sectionHead{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:16px; flex-wrap:wrap;
+}
+.sectionTitle{
+  margin:0 0 22px;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing:-.02em;
+}
+.sectionTitle--light{ color:#fff; }
+
+/* Features */
+.features{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:16px;
+}
+.feature{
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius: var(--radius);
+  padding:18px;
+  box-shadow: var(--shadow);
+}
+.feature__icon{
+  width:42px; height:42px;
+  border-radius:14px;
+  display:grid; place-items:center;
+  font-weight:1000;
+  margin-bottom:10px;
+  color:#0b0c10;
+}
+.accent--magenta{ background:var(--magenta); }
+.accent--cyan{ background:var(--cyan); }
+.accent--yellow{ background:var(--yellow); }
+.accent--lime{ background:var(--lime); }
+.feature h3{ margin:0 0 8px; }
+.feature p{ margin:0; color:var(--muted); line-height:1.55; }
+
+/* Artist Grid */
+.artistGrid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:14px;
+  margin-top: 12px;
+}
+.artistCard{
+  position:relative;
+  border-radius: 16px;
+  overflow:hidden;
+  background:#0e0f15;
+  border:1px solid rgba(255,255,255,.10);
+  min-height: 220px;
+  cursor:pointer;
+  transform: translateZ(0);
+}
+.artistCard__img{
+  position:absolute; inset:0;
+  background-size:cover;
+  background-position:center;
+  filter: contrast(1.02) saturate(1.02);
+  transform: scale(1.03);
+  transition: transform .45s ease;
+}
+.artistCard:hover .artistCard__img{ transform: scale(1.08); }
+
+.artistCard__overlay{
+  position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.12));
+  opacity:0;
+  transition: opacity .25s ease;
+}
+.artistCard:hover .artistCard__overlay{ opacity:1; }
+
+.artistCard__meta{
+  position:absolute; left:14px; right:14px; bottom:14px;
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:10px;
+  transform: translateY(10px);
+  opacity:0;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.artistCard:hover .artistCard__meta{
+  transform: translateY(0);
+  opacity:1;
+}
+
+.artistName{
+  font-weight:1000;
+  letter-spacing:-.02em;
+  font-size:1.05rem;
+}
+.artistTag{
+  margin-top:4px;
+  font-size:.86rem;
+  color: rgba(255,255,255,.82);
+}
+.pill{
+  padding:9px 10px;
+  border-radius:999px;
+  font-weight:1000;
+  font-size:.78rem;
+  background: rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.14);
+}
+
+/* Split Cards */
+.split{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+}
+.card{
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius: var(--radius);
+  padding:18px;
+  box-shadow: var(--shadow);
+}
+.cardTitle{ margin:0 0 14px; font-size:1.25rem; }
+.releaseBox{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:14px;
+  align-items:stretch;
+}
+.releaseCover{
+  border-radius:16px;
+  min-height: 220px;
+  background-size:cover; background-position:center;
+  border:1px solid rgba(255,255,255,.12);
+}
+.releaseMeta{
+  display:flex; flex-direction:column; justify-content:space-between;
+  padding:8px 0;
+}
+.releaseLabel{
+  color: var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:900;
+  font-size:.75rem;
+}
+.releaseName{ font-weight:1000; font-size:1.1rem; margin-top:6px; }
+
+.newsList{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+.newsList li{
+  display:flex; justify-content:space-between; gap:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  background: rgba(0,0,0,.18);
+  border:1px solid rgba(255,255,255,.08);
+}
+.newsList a{ color:#fff; font-weight:800; }
+.newsList span{ color:var(--muted); font-size:.85rem; white-space:nowrap; }
+
+/* Strip */
+.strip{
+  position:relative;
+  padding: 80px 0;
+  overflow:hidden;
+}
+.strip__bg{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(800px 420px at 20% 30%, rgba(255,233,90,.20), transparent 60%),
+    radial-gradient(800px 420px at 75% 40%, rgba(140,255,90,.18), transparent 60%),
+    linear-gradient(90deg, rgba(0,0,0,.6), rgba(0,0,0,.9));
+}
+.strip__content{ position:relative; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.strip h2{ margin:0; font-size: clamp(1.6rem, 3vw, 2.4rem); letter-spacing:-.02em; }
+.strip__icons{ display:flex; gap:10px; flex-wrap:wrap; }
+.strip__icons a{
+  padding:10px 12px;
+  border-radius:999px;
+  background: rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  font-weight:1000;
+}
+
+/* Footer */
+.footer{ background: #06070a; padding: 64px 0 26px; }
+.footer__top{ display:grid; grid-template-columns: .8fr 1.2fr; gap:18px; align-items:start; }
+.footer__title{ margin:0 0 14px; font-size:1.4rem; }
+.social{ display:flex; gap:10px; flex-wrap:wrap; }
+.social__item{
+  width:52px; height:52px; border-radius:16px;
+  display:grid; place-items:center;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  font-weight:1000;
+}
+.social__item:hover{ transform: translateY(-1px); }
+
+.contact{
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius: var(--radius);
+  padding:16px;
+}
+.contact__grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+input, textarea{
+  width:100%;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.26);
+  color:#fff;
+  padding:12px 12px;
+  outline:none;
+}
+textarea{ margin-top:10px; min-height:110px; resize:vertical; }
+input:focus, textarea:focus{ border-color: rgba(99,199,255,.45); box-shadow: 0 0 0 4px rgba(99,199,255,.10); }
+
+.footer__bottom{
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+}
+
+/* Artists page */
+.pageHero{
+  padding: 90px 0 24px;
+  background:
+    radial-gradient(700px 420px at 20% 30%, rgba(99,199,255,.20), transparent 60%),
+    radial-gradient(700px 420px at 75% 40%, rgba(255,75,216,.15), transparent 60%),
+    linear-gradient(to bottom, rgba(10,11,16,.45), rgba(10,11,16,.92));
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.pageHero__inner h1{ margin:0; font-size:2.4rem; }
+.toolbar{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+.search{ max-width: 360px; }
+
+/* Artist detail */
+.artistHero{
+  padding: 94px 0 24px;
+  background:
+    radial-gradient(900px 520px at 20% 30%, rgba(255,233,90,.18), transparent 60%),
+    radial-gradient(900px 520px at 75% 40%, rgba(255,75,216,.14), transparent 60%),
+    linear-gradient(to bottom, rgba(10,11,16,.35), rgba(10,11,16,.92));
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.backLink{ display:inline-block; color:rgba(255,255,255,.82); margin-bottom:14px; }
+.backLink:hover{ color:#fff; }
+
+.artistTop{ display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+.artistAvatarWrap{
+  width:94px; height:94px;
+  border-radius:999px;
+  background: linear-gradient(90deg, var(--magenta), var(--cyan));
+  padding:3px;
+  box-shadow: var(--shadow);
+}
+.artistAvatar{
+  width:100%; height:100%;
+  border-radius:999px;
+  object-fit:cover;
+  border:2px solid rgba(0,0,0,.6);
+}
+.artistTop__meta h1{ margin:0 0 10px; font-size:2.4rem; letter-spacing:-.03em; }
+
+.artistBtns{ display:flex; gap:10px; flex-wrap:wrap; }
+.artistSocial{ margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }
+.artistSocial a{
+  padding:9px 10px;
+  border-radius:999px;
+  background: rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  font-weight:1000;
+  font-size:.85rem;
+}
+
+.artistBody{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:18px;
+  padding-top: 24px;
+}
+.artistCol h2{ margin:0 0 10px; }
+.artistCol p{ margin:0; color: var(--muted); line-height:1.72; }
+
+.artistAside{ display:flex; flex-direction:column; gap:14px; }
+.contactCard, .photoCard{
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius: var(--radius);
+  padding:16px;
+}
+.photoCard img{ border-radius:16px; border:1px solid rgba(255,255,255,.10); }
+
+.pager{
+  display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  padding: 18px 0 8px;
+}
+.pager__btn{
+  padding:12px 14px;
+  border-radius:999px;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  font-weight:1000;
+}
+.pager__btn:hover{ border-color: rgba(255,255,255,.18); }
+
+/* Responsive */
+@media (max-width: 980px){
+  .features{ grid-template-columns: repeat(2, 1fr); }
+  .artistGrid{ grid-template-columns: repeat(2, 1fr); }
+  .split{ grid-template-columns: 1fr; }
+  .footer__top{ grid-template-columns: 1fr; }
+  .artistBody{ grid-template-columns: 1fr; }
+}
+@media (max-width: 720px){
+  .nav{ display:none; }
+  .burger{ display:inline-flex; align-items:center; justify-content:center; }
+  .mobile-menu.show{ display:block; }
+  .hero__content{ padding: 88px 0 42px; }
+  .contact__grid{ grid-template-columns: 1fr; }
+  .artistGrid{ grid-template-columns: 1fr; }
+}
+```
+
+---
+
+## 3) `public/app.js`
+
+```js
+const $ = (sel) => document.querySelector(sel);
+
+const views = {
+  home: $("#view-home"),
+  artists: $("#view-artists"),
+  artist: $("#view-artist"),
+};
+
+const yearEl = $("#year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/** Dados de exemplo (troque pelos seus artistas) */
+const artists = [
+  {
+    slug: "artista-1",
+    name: "Artista 1",
+    tag: "Pop / Trap",
+    avatar: "./assets/artist-1.jpg",
+    photo: "./assets/artist-1.jpg",
+    releasesUrl: "https://open.spotify.com/",
+    profileUrl: "https://open.spotify.com/",
+    socials: {
+      instagram: "https://instagram.com/",
+      youtube: "https://youtube.com/",
+      tiktok: "https://tiktok.com/",
+      spotify: "https://open.spotify.com/"
+    },
+    bio:
+      "Aqui vai a biografia do Artista 1. Troque por um texto real (curto e forte, igual o modelo do Potência).",
+    news:
+      "Novidades: últimos lançamentos, clipe novo, agenda, destaque em playlists…",
+    contact:
+      "Contato do artista (ou do produtor/assessoria): Nome • WhatsApp • Email"
+  },
+  {
+    slug: "artista-2",
+    name: "Artista 2",
+    tag: "Brega / Funk",
+    avatar: "./assets/artist-2.jpg",
+    photo: "./assets/artist-2.jpg",
+    releasesUrl: "https://open.spotify.com/",
+    profileUrl: "https://open.spotify.com/",
+    socials: { instagram: "#", youtube: "#", tiktok: "#", spotify: "#" },
+    bio: "Biografia do Artista 2.",
+    news: "Novidades do Artista 2.",
+    contact: "Contato do Artista 2."
+  },
+  {
+    slug: "artista-3",
+    name: "Artista 3",
+    tag: "Forró / Piseiro",
+    avatar: "./assets/artist-3.jpg",
+    photo: "./assets/artist-3.jpg",
+    releasesUrl: "https://open.spotify.com/",
+    profileUrl: "https://open.spotify.com/",
+    socials: { instagram: "#", youtube: "#", tiktok: "#", spotify: "#" },
+    bio: "Biografia do Artista 3.",
+    news: "Novidades do Artista 3.",
+    contact: "Contato do Artista 3."
+  },
+  {
+    slug: "artista-4",
+    name: "Artista 4",
+    tag: "Pagode / Samba",
+    avatar: "./assets/artist-4.jpg",
+    photo: "./assets/artist-4.jpg",
+    releasesUrl: "https://open.spotify.com/",
+    profileUrl: "https://open.spotify.com/",
+    socials: { instagram: "#", youtube: "#", tiktok: "#", spotify: "#" },
+    bio: "Biografia do Artista 4.",
+    news: "Novidades do Artista 4.",
+    contact: "Contato do Artista 4."
+  },
+];
+
+function artistCard(a) {
+  const el = document.createElement("div");
+  el.className = "artistCard";
+  el.setAttribute("role", "link");
+  el.setAttribute("tabindex", "0");
+  el.innerHTML = `
+    <div class="artistCard__img" style="background-image:url('${a.avatar}')"></div>
+    <div class="artistCard__overlay"></div>
+    <div class="artistCard__meta">
+      <div>
+        <div class="artistName">${a.name}</div>
+        <div class="artistTag">${a.tag || ""}</div>
+      </div>
+      <div class="pill">Ver bio</div>
+    </div>
+  `;
+  const go = () => (location.hash = `#artista/${a.slug}`);
+  el.addEventListener("click", go);
+  el.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
+  return el;
+}
+
+function renderGrids() {
+  const homeGrid = $("#artistsGridHome");
+  const allGrid = $("#artistsGridAll");
+
+  if (homeGrid) {
+    homeGrid.innerHTML = "";
+    artists.slice(0, 8).forEach((a) => homeGrid.appendChild(artistCard(a)));
+  }
+
+  if (allGrid) {
+    allGrid.innerHTML = "";
+    artists.forEach((a) => allGrid.appendChild(artistCard(a)));
+  }
+}
+
+renderGrids();
+
+/** Busca */
+const search = $("#artistSearch");
+if (search) {
+  search.addEventListener("input", (e) => {
+    const q = e.target.value.toLowerCase().trim();
+    const allGrid = $("#artistsGridAll");
+    allGrid.innerHTML = "";
+    artists
+      .filter(a => a.name.toLowerCase().includes(q) || (a.tag || "").toLowerCase().includes(q))
+      .forEach(a => allGrid.appendChild(artistCard(a)));
+  });
+}
+
+/** Router simples */
+function showView(which) {
+  Object.values(views).forEach(v => v.classList.remove("view--active"));
+  views[which].classList.add("view--active");
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+function renderArtist(slug) {
+  const idx = artists.findIndex(a => a.slug === slug);
+  const a = artists[idx];
+  if (!a) {
+    location.hash = "#artistas-lista";
+    return;
+  }
+
+  $("#artistName").textContent = a.name;
+  const avatar = $("#artistAvatar");
+  avatar.src = a.avatar;
+  avatar.alt = a.name;
+
+  $("#artistPhoto").src = a.photo || a.avatar;
+  $("#artistPhoto").alt = `Foto de ${a.name}`;
+
+  $("#artistBio").textContent = a.bio || "";
+  $("#artistNews").textContent = a.news || "";
+  $("#artistContact").textContent = a.contact || "";
+
+  const btnRel = $("#btnReleases");
+  btnRel.href = a.releasesUrl || "#";
+  const btnProf = $("#btnProfile");
+  btnProf.href = a.profileUrl || "#";
+
+  const social = $("#artistSocial");
+  social.innerHTML = "";
+  const map = [
+    ["instagram", "Instagram"],
+    ["spotify", "Spotify"],
+    ["youtube", "YouTube"],
+    ["tiktok", "TikTok"],
+  ];
+  map.forEach(([k, label]) => {
+    const url = a.socials?.[k];
+    if (!url) return;
+    const link = document.createElement("a");
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    link.textContent = label;
+    social.appendChild(link);
+  });
+
+  // Prev/Next
+  const prev = artists[(idx - 1 + artists.length) % artists.length];
+  const next = artists[(idx + 1) % artists.length];
+
+  const prevBtn = $("#prevArtist");
+  const nextBtn = $("#nextArtist");
+  prevBtn.href = `#artista/${prev.slug}`;
+  nextBtn.href = `#artista/${next.slug}`;
+}
+
+function route() {
+  const hash = (location.hash || "#home").replace("#", "");
+
+  if (hash.startsWith("artista/")) {
+    const slug = hash.split("/")[1];
+    showView("artist");
+    renderArtist(slug);
+    return;
+  }
+
+  if (hash === "artistas-lista") {
+    showView("artists");
+    return;
+  }
+
+  // default: home
+  showView("home");
+}
+
+window.addEventListener("hashchange", route);
+route();
+
+/** Burger menu */
+const burger = $("#burger");
+const mobileMenu = $("#mobileMenu");
+if (burger && mobileMenu) {
+  burger.addEventListener("click", () => {
+    const open = mobileMenu.classList.toggle("show");
+    burger.setAttribute("aria-expanded", String(open));
+    mobileMenu.setAttribute("aria-hidden", String(!open));
+  });
+
+  mobileMenu.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => {
+      mobileMenu.classList.remove("show");
+      burger.setAttribute("aria-expanded", "false");
+      mobileMenu.setAttribute("aria-hidden", "true");
+    });
+  });
+}
+```
+
+---
+
+## Como você deixa isso “igual o modelo” mais rápido (passo a passo)
+
+1. **Trocar o logo**: coloque seu `logo.png` em `public/assets/` e pronto.
+2. **Trocar as fotos**: jogue `artist-1.jpg`, `artist-2.jpg`… e altere o array `artists` no `app.js`.
+3. **Hero com vídeo**: se tiver MP4, bota como `assets/hero.mp4`. Se não tiver, pode remover a tag `<video>` e usar imagem no CSS.
+4. **Links reais**: coloque Spotify/Instagram/YouTube de cada artista no `artists[]`.
+
+---
+
+## Quer que eu ajuste com seus artistas reais agora?
+
+Se você colar aqui:
+
+* a lista de artistas (nome + 1 link principal + foto/capa)
+  eu já te devolvo o `artists[]` prontinho e organizado.
+
+E se você quiser, eu também te passo uma versão com:
+
+* **transição de fade entre palavras no hero** (mais “cinema”)
+* e um efeito “glitch/pixel” bem IGAPÓ no hover.
