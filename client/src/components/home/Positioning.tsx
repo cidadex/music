@@ -12,52 +12,71 @@ export function Positioning() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           
           {/* Left Column: Huge Impact Typography */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-6 relative pr-0 lg:pr-8"
-          >
+          <div className="lg:col-span-6 relative pr-0 lg:pr-8">
              <div className="absolute -left-12 top-0 w-1 h-full bg-gradient-to-b from-[#63c7ff] via-[#ff4bd8] to-[#a1f65e] hidden lg:block opacity-50" />
-             <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight uppercase leading-[1.2] text-white">
+             <motion.h2 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight uppercase leading-[1.2] text-white"
+            >
               Acreditamos <br className="hidden md:block"/>
               no artista <br className="hidden md:block"/>
               antes do <br className="hidden md:block"/>
               <span className="text-[#a1f65e]">algoritmo.</span>
-            </h2>
-          </motion.div>
+            </motion.h2>
+          </div>
 
           {/* Right Column: Spaced Text Blocks */}
-          <div className="lg:col-span-6 flex flex-col justify-center space-y-6 lg:pl-12">
+          <div className="lg:col-span-6 flex flex-col justify-center space-y-12 lg:pl-12">
             
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <p className="text-2xl md:text-3xl text-white font-medium leading-snug">
+              <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed mb-4">
                 A música começa na identidade.<br className="hidden md:block"/> Os números vêm depois.
+              </p>
+              <p className="text-lg md:text-xl text-gray-300 font-normal leading-relaxed">
+                A IGAPÓ MUSIC é um selo de distribuição que coloca o artista no centro. Mais do que subir faixas, estruturamos trajetórias.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="border-l-2 border-[#ff4bd8] pl-6"
+            >
+              <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-2">
+                Distribuímos sua música nas principais plataformas de streaming. <br className="hidden md:block"/>
+                <span className="text-[#63c7ff]">Desenvolvemos sua carreira com estratégia.</span>
+              </p>
+              <p className="text-base md:text-lg text-gray-400 font-normal leading-relaxed">
+                <span className="font-semibold text-gray-200">Spotify, Apple Music, Deezer, YouTube, TikTok</span> e muito mais — com planejamento, transparência e visão de longo prazo.
               </p>
             </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <p className="text-xl md:text-2xl text-gray-400 font-normal leading-snug">
-                <span className="block mb-1">Na IGAPÓ MUSIC, cada lançamento é tratado como um projeto estratégico.</span>
-                <span className="block mb-1">Cada artista é acompanhado de perto.</span>
+              <p className="text-lg md:text-xl text-gray-400 font-normal leading-relaxed space-y-2">
+                <span className="block">Na IGAPÓ MUSIC, cada lançamento é tratado como um projeto estratégico.</span>
+                <span className="block">Cada artista é acompanhado de perto.</span>
                 <span className="block">Cada passo é pensado para construir algo duradouro.</span>
               </p>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.6 }}
               className="pt-2"
