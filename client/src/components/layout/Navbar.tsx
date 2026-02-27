@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, Sparkles, Search } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import logoUrl from "@assets/WhatsApp_Image_2026-02-27_at_13.43.31_(1)_-_Editado_1772214168034.png";
 import { useArtists } from "@/hooks/useArtists";
 
@@ -73,24 +73,24 @@ export function Navbar() {
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => (
               <Link key={link.label} href={link.href}>
-                <div className="relative group flex items-center cursor-pointer px-2 py-1 overflow-hidden">
-                  <Sparkles className="w-3 h-3 text-[#ff4bd8] opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 absolute left-0 top-0" />
-                  <span className={`text-sm md:text-base font-bold tracking-widest uppercase transition-colors relative z-10 ${location === link.href ? "text-[#ff4bd8]" : "text-white group-hover:text-white"}`}>
-                    {link.label}
-                  </span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none skew-x-12 z-0" />
-                </div>
+                <span className={`text-sm font-semibold tracking-widest uppercase transition-colors cursor-pointer ${
+                  location === link.href 
+                    ? "text-[#ff4bd8]" 
+                    : "text-white hover:text-[#ff4bd8]"
+                }`}>
+                  {link.label}
+                </span>
               </Link>
             ))}
             <button
-              className="text-white hover:text-[#ff4bd8] ml-4 transition-colors"
+              className="text-white hover:text-[#ff4bd8] ml-2 transition-colors"
               onClick={() => setSearchOpen(true)}
               data-testid="button-open-search"
             >
-              <Menu size={24} />
+              <Menu size={22} />
             </button>
           </nav>
 
@@ -106,13 +106,15 @@ export function Navbar() {
           <div className="lg:hidden absolute top-full left-0 w-full bg-[#0b0c10] border-t border-gray-800 p-4 flex flex-col gap-4 shadow-xl">
             {navLinks.map((link) => (
               <Link key={link.label} href={link.href}>
-                <span className="text-base font-bold tracking-widest uppercase text-white hover:text-[#ff4bd8] py-3 block border-b border-gray-800 transition-colors" onClick={() => setIsOpen(false)}>
+                <span className={`text-base font-semibold tracking-widest uppercase py-3 block border-b border-gray-800 transition-colors ${
+                  location === link.href ? "text-[#ff4bd8]" : "text-white hover:text-[#ff4bd8]"
+                }`} onClick={() => setIsOpen(false)}>
                   {link.label}
                 </span>
               </Link>
             ))}
             <button
-              className="text-left text-base font-bold tracking-widest uppercase text-white hover:text-[#ff4bd8] py-3 border-b border-gray-800 transition-colors flex items-center gap-2"
+              className="text-left text-base font-semibold tracking-widest uppercase text-white hover:text-[#ff4bd8] py-3 border-b border-gray-800 transition-colors flex items-center gap-2"
               onClick={() => { setIsOpen(false); setSearchOpen(true); }}
             >
               <Search size={18} /> Buscar
