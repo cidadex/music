@@ -31,10 +31,14 @@ shared/
 - `GET /api/artists` - List all artists
 - `GET /api/artists/:slug` - Get single artist by slug
 - `POST /api/contact` - Submit contact form message
+- `GET /api/news` - List all news items
+- `POST /api/admin/seed` - Seed all data (artists + news)
+- `POST /api/admin/clear` - Clear all data
 - `GET /api/instagram` - Fetch latest 6 Instagram posts (requires INSTAGRAM_ACCESS_TOKEN env var)
 
 ## Database Tables
 - `artists` - id, slug, name, genre, short_bio, image, bio, latest_release, contact
+- `news` - id, title, date
 - `contact_messages` - id, name, email, message, created_at
 
 ## Key Features

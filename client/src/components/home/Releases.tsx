@@ -1,8 +1,10 @@
 import { Play } from "lucide-react";
 import { useArtists } from "@/hooks/useArtists";
+import { useNews } from "@/hooks/useNews";
 
 export function Releases() {
   const { data: artists = [] } = useArtists();
+  const { data: newsItems = [] } = useNews();
   const featuredArtist = artists[0];
 
   return (
@@ -54,14 +56,8 @@ export function Releases() {
               <h4 className="text-base md:text-lg font-bold tracking-widest uppercase mb-6 text-white border-b border-gray-800 pb-4">
                 Posts recentes
               </h4>
-              {[
-                { date: "5 de fevereiro de 2024", title: "Com clima de verão e energia feminina, novo talento lança single 'Solteira'" },
-                { date: "31 de janeiro de 2024", title: "'Casais Trocados': Artista ultrapassa 5 milhões de streams no Spotify e se destaca nos rankings nacionais" },
-                { date: "24 de janeiro de 2024", title: "Gravadora promove evento de gravação de DVD em apresentação gratuita no Pelourinho" },
-                { date: "10 de outubro de 2023", title: "Cena trap do nordeste: conheça o novo artista do time IGAPÓ" },
-                { date: "27 de setembro de 2023", title: "Com ela tudo é mais 'gostoso' no pagode: conheça nossa nova aposta" }
-              ].map((news, i) => (
-                <a key={i} href="#" className="block border-b border-gray-800 pb-6 group" data-testid={`link-news-${i}`}>
+              {newsItems.map((news, i) => (
+                <a key={news.id} href="#" className="block border-b border-gray-800 pb-6 group" data-testid={`link-news-${i}`}>
                   <h5 className="text-base md:text-lg font-medium text-gray-300 group-hover:text-[#63c7ff] transition-colors mb-3 leading-relaxed pr-4">
                     {news.title}
                   </h5>

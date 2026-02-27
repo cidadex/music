@@ -19,6 +19,16 @@ export const insertArtistSchema = createInsertSchema(artists).omit({ id: true })
 export type InsertArtist = z.infer<typeof insertArtistSchema>;
 export type Artist = typeof artists.$inferSelect;
 
+export const news = pgTable("news", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  date: varchar("date", { length: 100 }).notNull(),
+});
+
+export const insertNewsSchema = createInsertSchema(news).omit({ id: true });
+export type InsertNews = z.infer<typeof insertNewsSchema>;
+export type News = typeof news.$inferSelect;
+
 export const contactMessages = pgTable("contact_messages", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),

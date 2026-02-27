@@ -1,4 +1,4 @@
-import { type Artist, type InsertArtist, type ContactMessage, type InsertContact, artists, contactMessages } from "@shared/schema";
+import { type Artist, type InsertArtist, type ContactMessage, type InsertContact, type News, type InsertNews, artists, contactMessages, news } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
 
@@ -7,6 +7,9 @@ export interface IStorage {
   getArtistBySlug(slug: string): Promise<Artist | undefined>;
   createArtist(artist: InsertArtist): Promise<Artist>;
   clearArtists(): Promise<void>;
+  getNews(): Promise<News[]>;
+  createNews(item: InsertNews): Promise<News>;
+  clearNews(): Promise<void>;
   createContactMessage(msg: InsertContact): Promise<ContactMessage>;
   getContactMessages(): Promise<ContactMessage[]>;
 }
@@ -28,6 +31,19 @@ export class DatabaseStorage implements IStorage {
 
   async clearArtists(): Promise<void> {
     await db.delete(artists);
+  }
+
+  async getNews(): Promise<News[]> {
+    return db.select().from(news);
+  }
+
+  async createNews(item: InsertNews): Promise<News> {
+    const [created] = await db.insert(news).values(item).returning();
+    return created;
+  }
+
+  async clearNews(): Promise<void> {
+    await db.delete(news);
   }
 
   async createContactMessage(msg: InsertContact): Promise<ContactMessage> {
