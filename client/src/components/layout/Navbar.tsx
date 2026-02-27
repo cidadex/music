@@ -45,9 +45,9 @@ export function Navbar() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/artists", label: "Artistas" },
-    { href: "#quem-somos", label: "Quem Somos" },
-    { href: "#novidades", label: "Novidades" },
-    { href: "#contato", label: "Contato" },
+    { href: "/#quem-somos", label: "Quem Somos" },
+    { href: "/#novidades", label: "Novidades" },
+    { href: "/#contato", label: "Contato" },
   ];
 
   return (
