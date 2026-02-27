@@ -2,6 +2,8 @@ export const ARTISTS = [
   {
     id: "aldair-playboy",
     name: "Aldair Playboy",
+    genre: "BREGAFUNK",
+    shortBio: "Dono do hit 'Amor Falso' e um dos principais nomes do Brega Funk",
     image: "/src/assets/images/artist_1.jpg",
     bio: "Aldair Playboy é natural da Paraíba. O cantor de 26 anos iniciou sua carreira musical em 2010. Apesar de todas as dificuldades enfrentadas no início, o artista conseguiu se destacar no movimento que ficou conhecido como 'Batidão'.",
     latestRelease: "Pra Ouvir No Paredão",
@@ -10,6 +12,8 @@ export const ARTISTS = [
   {
     id: "raffa-torres",
     name: "Raffa Torres",
+    genre: "SERTANEJO",
+    shortBio: "Um dos maiores compositores do Brasil e hitmaker.",
     image: "/src/assets/images/artist_2.jpg",
     bio: "Raffa Torres é um dos maiores compositores do Brasil, dono de hits gigantes na voz de vários artistas e com carreira solo em ascensão.",
     latestRelease: "Casais Trocados",
@@ -18,6 +22,8 @@ export const ARTISTS = [
   {
     id: "karenzinha",
     name: "Karenzinha",
+    genre: "PAGODE",
+    shortBio: "A nova voz do pagode com energia lá em cima.",
     image: "/src/assets/images/artist_3.jpg",
     bio: "Com ela tudo é mais gostoso no pagode, conheça Karenzinha.",
     latestRelease: "Single Novo",
@@ -26,6 +32,8 @@ export const ARTISTS = [
   {
     id: "gosta",
     name: "Cena Trap",
+    genre: "TRAP",
+    shortBio: "A força e a rima do trap nordestino.",
     image: "/src/assets/images/artist_4.jpg",
     bio: "Cena trap do nordeste ganha destaque com os novos sons.",
     latestRelease: "Trap Vol 1",
