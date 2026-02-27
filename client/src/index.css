@@ -103,6 +103,11 @@
   100% { transform: translateX(-50%); }
 }
 
+@keyframes shimmer {
+  0% { transform: translateX(-150%) skewX(-12deg); }
+  100% { transform: translateX(250%) skewX(-12deg); }
+}
+
 .gradient-text {
   background: linear-gradient(90deg, hsl(var(--brand-magenta)), hsl(var(--brand-yellow)), hsl(var(--brand-cyan)));
   -webkit-background-clip: text;

@@ -39,7 +39,7 @@ export function Positioning() {
               <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed mb-4">
                 A música começa na identidade.<br className="hidden md:block"/> Os números vêm depois.
               </p>
-              <p className="text-lg md:text-xl text-gray-300 font-normal leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-300 font-normal leading-relaxed text-justify">
                 A IGAPÓ MUSIC é um selo de distribuição que coloca o artista no centro. Mais do que subir faixas, estruturamos trajetórias.
               </p>
             </motion.div>
@@ -59,7 +59,7 @@ export function Positioning() {
                 Distribuímos sua música nas principais plataformas de streaming. <br className="hidden md:block"/>
                 <span className="text-[#63c7ff]">Desenvolvemos sua carreira com estratégia.</span>
               </p>
-              <p className="text-base md:text-xl text-gray-400 font-normal leading-relaxed">
+              <p className="text-base md:text-xl text-gray-400 font-normal leading-relaxed text-justify">
                 <span className="font-semibold text-gray-200">Spotify, Apple Music, Deezer, YouTube, TikTok</span> e muito mais — com planejamento, transparência e visão de longo prazo.
               </p>
             </motion.div>
@@ -70,10 +70,8 @@ export function Positioning() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <p className="text-lg md:text-2xl text-gray-400 font-normal leading-relaxed space-y-3">
-                <span className="block">Na IGAPÓ MUSIC, cada lançamento é tratado como um projeto estratégico.</span>
-                <span className="block">Cada artista é acompanhado de perto.</span>
-                <span className="block">Cada passo é pensado para construir algo duradouro.</span>
+              <p className="text-lg md:text-2xl text-gray-400 font-normal leading-relaxed text-justify">
+                Na IGAPÓ MUSIC, cada lançamento é tratado como um projeto estratégico. Cada artista é acompanhado de perto. Cada passo é pensado para construir algo duradouro.
               </p>
             </motion.div>
 
