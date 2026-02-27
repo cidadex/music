@@ -78,13 +78,13 @@ export function Navbar() {
               const isActive = location === link.href;
               return (
                 <Link key={link.label} href={link.href}>
-                  <span className={`relative text-sm font-semibold tracking-widest uppercase transition-colors cursor-pointer py-5 ${
+                  <span className={`relative text-sm font-semibold tracking-widest uppercase transition-colors cursor-pointer py-5 group ${
                     isActive 
                       ? "text-[#ff4bd8]" 
                       : "text-white hover:text-[#ff4bd8]"
                   }`}>
-                    {isActive && (
-                      <span className="absolute left-1/2 -translate-x-1/2 -top-6 w-[140%] h-[calc(100%+24px)] bg-gradient-to-b from-white/10 via-white/5 to-transparent pointer-events-none rounded-b-lg" />
+                    {(isActive || true) && (
+                      <span className={`absolute left-1/2 -translate-x-1/2 -top-6 w-[140%] h-[calc(100%+24px)] bg-gradient-to-b from-white/10 via-white/5 to-transparent pointer-events-none rounded-b-lg transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
                     )}
                     {link.label}
                   </span>
