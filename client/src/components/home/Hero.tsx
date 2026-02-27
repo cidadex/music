@@ -127,16 +127,20 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-10 flex flex-col items-center gap-4 text-white/70"
+          className="absolute bottom-6 flex flex-col items-center gap-2 cursor-pointer group"
+          onClick={() => {
+            const el = document.getElementById('servicos');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
         >
-          <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent overflow-hidden relative">
+          <span className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/50 group-hover:text-white transition-colors">Scroll</span>
+          <div className="w-[1px] h-16 bg-white/10 overflow-hidden relative mt-1">
             <motion.div 
-              animate={{ y: [-20, 50] }}
+              animate={{ y: ["-100%", "200%"] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-              className="w-full h-1/2 bg-[#ff4bd8] shadow-[0_0_10px_#ff4bd8]"
+              className="w-full h-1/2 bg-gradient-to-b from-transparent via-[#ff4bd8] to-[#ff4bd8] shadow-[0_0_10px_#ff4bd8]"
             />
           </div>
-          <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/50">Scroll</span>
         </motion.div>
       </div>
     </section>
