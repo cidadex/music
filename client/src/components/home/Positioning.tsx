@@ -19,11 +19,12 @@ export function Positioning() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-[4.5rem] xl:text-[5.5rem] font-black tracking-tighter uppercase leading-[1.1] text-white break-words"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight uppercase leading-[1.2] text-white"
             >
               Acreditamos <br className="hidden md:block"/>
               no artista <br className="hidden md:block"/>
-              <span className="text-[#a1f65e] block mt-2">antes do<br className="hidden md:block"/> algoritmo.</span>
+              antes do <br className="hidden md:block"/>
+              <span className="text-[#a1f65e]">algoritmo.</span>
             </motion.h2>
           </div>
 
