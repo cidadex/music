@@ -49,7 +49,10 @@ export function Services() {
   return (
     <section id="servicos" className="py-24 md:py-32 bg-[#0b0c10] text-white">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-4xl md:text-6xl font-bold mb-24 text-center tracking-tight">Potencializando carreiras musicais</h2>
+        <div className="mb-24 text-center">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight uppercase mb-6 text-[#63c7ff]">O que fazemos</h2>
+          <h3 className="text-2xl md:text-4xl font-medium text-gray-300">Estrutura completa para quem quer viver de música.</h3>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 text-center max-w-7xl mx-auto">
           {features.map((f, i) => (

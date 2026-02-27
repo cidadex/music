@@ -12,9 +12,14 @@ export function ArtistsPreview() {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-16 uppercase tracking-tighter drop-shadow-md">
-          Nossos artistas
-        </h2>
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter drop-shadow-md mb-6">
+            Artistas que crescem com a IGAPÓ MUSIC
+          </h2>
+          <p className="text-lg md:text-2xl text-black font-bold uppercase tracking-widest bg-[#a1f65e] inline-block px-4 py-2 mt-4 shadow-lg">
+            Cada projeto é único. Cada trajetória é construída com acompanhamento real.
+          </p>
+        </div>
 
         {/* Dense Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-white p-[2px] gap-[2px] mx-auto max-w-6xl mb-12 shadow-2xl">

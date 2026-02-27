@@ -1,7 +1,9 @@
 import { Hero } from "@/components/home/Hero";
+import { Positioning } from "@/components/home/Positioning";
 import { Services } from "@/components/home/Services";
 import { ArtistsPreview } from "@/components/home/ArtistsPreview";
 import { Releases } from "@/components/home/Releases";
+import { Cta } from "@/components/home/Cta";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
@@ -11,6 +13,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Positioning />
         <Services />
         <ArtistsPreview />
         <Releases />
@@ -56,6 +59,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <Cta />
       </main>
       <Footer />
     </div>
