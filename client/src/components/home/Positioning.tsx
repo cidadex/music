@@ -29,7 +29,7 @@ export function Positioning() {
           </div>
 
           {/* Right Column: Spaced Text Blocks */}
-          <div className="lg:col-span-6 flex flex-col justify-center space-y-12 pl-0 lg:pl-8">
+          <div className="lg:col-span-6 flex flex-col justify-center space-y-10 lg:pl-12">
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -37,9 +37,8 @@ export function Positioning() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h3 className="text-xl md:text-3xl font-bold text-[#63c7ff] mb-4 uppercase tracking-widest">A fundação</h3>
-              <p className="text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
-                A música começa na identidade. Os números vêm depois.
+              <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed">
+                A música começa na identidade.<br className="hidden md:block"/> Os números vêm depois.
               </p>
             </motion.div>
             
@@ -48,13 +47,11 @@ export function Positioning() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="pl-0 lg:pl-12 border-l-0 lg:border-l border-gray-800"
             >
-               <h3 className="text-xl md:text-3xl font-bold text-[#ff4bd8] mb-4 uppercase tracking-widest">O processo</h3>
-              <p className="text-lg md:text-xl text-gray-400 font-medium leading-relaxed">
-                Na IGAPÓ MUSIC, cada lançamento é tratado como um projeto estratégico.
-                Cada artista é acompanhado de perto.
-                Cada passo é pensado para construir algo duradouro.
+              <p className="text-xl md:text-2xl text-gray-400 font-normal leading-relaxed space-y-2">
+                <span className="block">Na IGAPÓ MUSIC, cada lançamento é tratado como um projeto estratégico.</span>
+                <span className="block">Cada artista é acompanhado de perto.</span>
+                <span className="block">Cada passo é pensado para construir algo duradouro.</span>
               </p>
             </motion.div>
 
@@ -63,10 +60,10 @@ export function Positioning() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="pt-8"
+              className="pt-6"
             >
-              <p className="text-2xl md:text-4xl font-black text-white italic tracking-tight">
-                "Distribuição é só o <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4bd8] to-[#63c7ff]">começo.</span>"
+              <p className="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#ff4bd8] via-[#63c7ff] to-[#a1f65e] tracking-tight">
+                Distribuição é só o começo.
               </p>
             </motion.div>
           </div>
