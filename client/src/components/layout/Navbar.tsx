@@ -74,17 +74,23 @@ export function Navbar() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <Link key={link.label} href={link.href}>
-                <span className={`text-sm font-semibold tracking-widest uppercase transition-colors cursor-pointer ${
-                  location === link.href 
-                    ? "text-[#ff4bd8]" 
-                    : "text-white hover:text-[#ff4bd8]"
-                }`}>
-                  {link.label}
-                </span>
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = location === link.href;
+              return (
+                <Link key={link.label} href={link.href}>
+                  <span className={`relative text-sm font-semibold tracking-widest uppercase transition-colors cursor-pointer py-5 ${
+                    isActive 
+                      ? "text-[#ff4bd8]" 
+                      : "text-white hover:text-[#ff4bd8]"
+                  }`}>
+                    {isActive && (
+                      <span className="absolute left-1/2 -translate-x-1/2 -top-6 w-[140%] h-[calc(100%+24px)] bg-gradient-to-b from-white/10 via-white/5 to-transparent pointer-events-none rounded-b-lg" />
+                    )}
+                    {link.label}
+                  </span>
+                </Link>
+              );
+            })}
             <button
               className="text-white hover:text-[#ff4bd8] ml-2 transition-colors"
               onClick={() => setSearchOpen(true)}
