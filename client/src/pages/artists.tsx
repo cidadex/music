@@ -2,14 +2,15 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
-import { ARTISTS } from "@/data/artists";
+import { useArtists } from "@/hooks/useArtists";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 export default function Artists() {
   const [search, setSearch] = useState("");
+  const { data: artists = [], isLoading } = useArtists();
 
-  const filteredArtists = ARTISTS.filter(a => 
+  const filteredArtists = artists.filter(a => 
     a.name.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -51,43 +52,48 @@ export default function Artists() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full bg-card border border-border rounded-xl pl-12 pr-4 py-4 text-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-foreground shadow-lg"
+              data-testid="input-search-artist"
             />
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filteredArtists.map((artist, i) => (
-              <motion.div
-                key={artist.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.05, duration: 0.3 }}
-              >
-                <Link href={`/artists/${artist.id}`}>
-                  <div className="group relative aspect-[3/4] bg-card rounded-xl overflow-hidden cursor-pointer shadow-xl border border-border hover:border-primary transition-all duration-300">
-                    <img 
-                      src={artist.image} 
-                      alt={artist.name} 
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 artist-hover-overlay opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                    
-                    <div className="absolute bottom-0 left-0 p-6 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <h3 className="text-2xl font-black text-white mb-2 group-hover:text-primary transition-colors">{artist.name}</h3>
-                      <p className="text-white/80 text-sm font-medium uppercase tracking-wider flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                        Ver perfil <span className="text-primary">→</span>
-                      </p>
+          {isLoading ? (
+            <div className="text-center py-12 text-muted-foreground text-lg">Carregando artistas...</div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {filteredArtists.map((artist, i) => (
+                <motion.div
+                  key={artist.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.05, duration: 0.3 }}
+                >
+                  <Link href={`/artists/${artist.slug}`}>
+                    <div className="group relative aspect-[3/4] bg-card rounded-xl overflow-hidden cursor-pointer shadow-xl border border-border hover:border-primary transition-all duration-300" data-testid={`card-artist-${artist.slug}`}>
+                      <img 
+                        src={artist.image} 
+                        alt={artist.name} 
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 artist-hover-overlay opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                      
+                      <div className="absolute bottom-0 left-0 p-6 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <h3 className="text-2xl font-black text-white mb-2 group-hover:text-primary transition-colors">{artist.name}</h3>
+                        <p className="text-white/80 text-sm font-medium uppercase tracking-wider flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                          Ver perfil <span className="text-primary">→</span>
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-            
-            {filteredArtists.length === 0 && (
-              <div className="col-span-full py-12 text-center text-muted-foreground text-lg">
-                Nenhum artista encontrado com "{search}"
-              </div>
-            )}
-          </div>
+                  </Link>
+                </motion.div>
+              ))}
+              
+              {filteredArtists.length === 0 && !isLoading && (
+                <div className="col-span-full py-12 text-center text-muted-foreground text-lg">
+                  Nenhum artista encontrado com "{search}"
+                </div>
+              )}
+            </div>
+          )}
 
         </div>
       </main>

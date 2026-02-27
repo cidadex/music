@@ -1,38 +1,38 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
-
-// modify the interface with any CRUD methods
-// you might need
+import { type Artist, type InsertArtist, type ContactMessage, type InsertContact, artists, contactMessages } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getArtists(): Promise<Artist[]>;
+  getArtistBySlug(slug: string): Promise<Artist | undefined>;
+  createArtist(artist: InsertArtist): Promise<Artist>;
+  createContactMessage(msg: InsertContact): Promise<ContactMessage>;
+  getContactMessages(): Promise<ContactMessage[]>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
-
-  constructor() {
-    this.users = new Map();
+export class DatabaseStorage implements IStorage {
+  async getArtists(): Promise<Artist[]> {
+    return db.select().from(artists);
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async getArtistBySlug(slug: string): Promise<Artist | undefined> {
+    const [artist] = await db.select().from(artists).where(eq(artists.slug, slug));
+    return artist;
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+  async createArtist(artist: InsertArtist): Promise<Artist> {
+    const [created] = await db.insert(artists).values(artist).returning();
+    return created;
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async createContactMessage(msg: InsertContact): Promise<ContactMessage> {
+    const [created] = await db.insert(contactMessages).values(msg).returning();
+    return created;
+  }
+
+  async getContactMessages(): Promise<ContactMessage[]> {
+    return db.select().from(contactMessages);
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();

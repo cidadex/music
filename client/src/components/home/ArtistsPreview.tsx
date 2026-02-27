@@ -1,19 +1,22 @@
 import { Link } from "wouter";
-import { ARTISTS } from "@/data/artists";
+import { useArtists } from "@/hooks/useArtists";
 import logoUrl from "@assets/WhatsApp_Image_2026-02-27_at_13.43.31_(1)_-_Editado_1772214168034.png";
 
 export function ArtistsPreview() {
+  const { data: artists = [] } = useArtists();
+
+  const displayArtists = artists.length > 0
+    ? [...artists, ...artists, ...artists].slice(0, 10)
+    : [];
+
   return (
     <section id="artistas" className="py-24 bg-[#a1f65e] relative overflow-hidden">
-      {/* Background Dots Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#000000_2px,transparent_2px)] [background-size:24px_24px] opacity-[0.08] pointer-events-none"></div>
 
       <div className="container mx-auto px-4 md:px-8 lg:px-16 text-left relative z-10">
         
-        {/* Top Header Section: Split Layout */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mb-20 max-w-[90rem] mx-auto">
           
-          {/* Left Column: Text */}
           <div className="lg:w-1/2 flex flex-col gap-6">
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-black text-[#0b0c10] uppercase tracking-tighter leading-[0.9]">
               Artistas <br/> que crescem <br/> com a
@@ -28,7 +31,6 @@ export function ArtistsPreview() {
             </p>
           </div>
 
-          {/* Right Column: Large Logo */}
           <div className="lg:w-1/2 flex justify-center lg:justify-end lg:pl-10">
             <img 
               src={logoUrl} 
@@ -38,15 +40,12 @@ export function ArtistsPreview() {
           </div>
         </div>
 
-        {/* Dense Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-[#0b0c10] p-[2px] gap-[2px] mx-auto max-w-7xl mb-16 shadow-2xl relative">
           
-          {/* Decorative element behind grid */}
           <div className="absolute -inset-4 border-2 border-[#0b0c10] -z-10 hidden md:block"></div>
-          {ARTISTS.concat(ARTISTS).concat(ARTISTS).slice(0, 10).map((artist, i) => (
-            <div key={i} className="relative aspect-square sm:aspect-[4/5] bg-black overflow-hidden group cursor-pointer">
+          {displayArtists.map((artist, i) => (
+            <div key={i} className="relative aspect-square sm:aspect-[4/5] bg-black overflow-hidden group cursor-pointer" data-testid={`card-artist-preview-${i}`}>
               
-              {/* Image that zooms on hover */}
               <div className="absolute inset-0 overflow-hidden">
                 <img 
                   src={artist.image} 
@@ -55,13 +54,10 @@ export function ArtistsPreview() {
                 />
               </div>
 
-              {/* White background triangle graphic from reference */}
               <div className="absolute bottom-0 right-0 w-[150%] h-[50%] bg-white transform origin-bottom-left -rotate-12 translate-y-full group-hover:translate-y-[150%] transition-transform duration-500 z-10 opacity-90"></div>
               
-              {/* Pink accent triangle graphic from reference */}
               <div className="absolute bottom-0 right-0 w-[150%] h-[50%] bg-[#ff4bd8] transform origin-bottom-left -rotate-12 translate-y-full group-hover:translate-y-[150%] transition-transform duration-500 delay-75 z-10 opacity-90"></div>
 
-              {/* Hover Overlay that slides up */}
               <div className="absolute inset-0 bg-black/90 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] z-20 flex flex-col justify-between p-6">
                 <p className="text-white/90 text-sm font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">
                   {artist.shortBio || artist.bio.substring(0, 80) + '...'}
@@ -72,9 +68,8 @@ export function ArtistsPreview() {
                 </div>
               </div>
 
-              {/* Default Name label (visible when NOT hovered, like the reference) */}
               <div className="absolute bottom-0 left-0 p-4 z-10 group-hover:opacity-0 transition-opacity duration-300 w-full text-left">
-                <h3 className="text-white font-bold text-base md:text-lg tracking-wider uppercase drop-shadow-lg">{artist.name}</h3>
+                <h3 className="text-white font-bold text-base md:text-lg tracking-wider uppercase drop-shadow-lg" data-testid={`text-artist-name-${i}`}>{artist.name}</h3>
                 <span className="text-[#a1f65e] text-[10px] font-bold tracking-widest uppercase drop-shadow-md">{artist.genre || 'ARTISTA'}</span>
               </div>
             </div>
@@ -82,7 +77,7 @@ export function ArtistsPreview() {
         </div>
 
         <Link href="/artists">
-          <span className="inline-block px-10 py-4 bg-white text-[#0b0c10] font-black text-sm tracking-widest uppercase hover:bg-black hover:text-[#a1f65e] transition-colors cursor-pointer shadow-lg">
+          <span className="inline-block px-10 py-4 bg-white text-[#0b0c10] font-black text-sm tracking-widest uppercase hover:bg-black hover:text-[#a1f65e] transition-colors cursor-pointer shadow-lg" data-testid="link-all-artists">
             Conheça todos
           </span>
         </Link>
