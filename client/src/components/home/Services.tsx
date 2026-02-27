@@ -9,7 +9,12 @@ export function Services() {
           <path d="M8 5v14l11-7z" />
         </svg>
       ),
-      desc: "Distribuição e monetização de áudio e vídeo em todas as plataformas digitais."
+      desc: (
+        <span className="flex flex-col gap-2">
+          <span className="font-bold text-white block mb-1">Distribuição Digital Completa</span>
+          Colocamos sua música nas principais plataformas de streaming do mundo, com organização, agilidade e profissionalismo.
+        </span>
+      )
     },
     {
       // A composite icon for marketing/development resembling the reference
@@ -24,7 +29,12 @@ export function Services() {
            </svg>
         </div>
       ),
-      desc: "Suporte em marketing e desenvolvimento artístico."
+      desc: (
+        <span className="flex flex-col gap-2">
+          <span className="font-bold text-white block mb-1">Planejamento de Lançamento</span>
+          Estratégia antes, durante e depois do lançamento para maximizar alcance.
+        </span>
+      )
     },
     {
       // A solid Music Note icon resembling the reference
@@ -33,7 +43,12 @@ export function Services() {
           <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
       ),
-      desc: "Divisão de royalties de forma prática e transparente."
+      desc: (
+        <span className="flex flex-col gap-2">
+          <span className="font-bold text-white block mb-1">Gestão Transparente de Royalties</span>
+          Relatórios claros, divisão simplificada e controle real sobre seus ganhos.
+        </span>
+      )
     },
     {
       // A solid Volume/Speaker icon resembling the reference
@@ -42,7 +57,12 @@ export function Services() {
           <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
         </svg>
       ),
-      desc: "Atendimento personalizado com time altamente qualificado."
+      desc: (
+        <span className="flex flex-col gap-2">
+          <span className="font-bold text-white block mb-1">Desenvolvimento Artístico</span>
+          Orientação estratégica para fortalecer posicionamento, marca e crescimento sustentável.
+        </span>
+      )
     }
   ];
 
@@ -50,8 +70,8 @@ export function Services() {
     <section id="servicos" className="py-24 md:py-32 bg-[#0b0c10] text-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-24 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight uppercase mb-6 text-[#63c7ff]">O que fazemos</h2>
-          <h3 className="text-2xl md:text-4xl font-medium text-gray-300">Estrutura completa para quem quer viver de música.</h3>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tight uppercase mb-6 text-[#63c7ff]">O QUE FAZEMOS</h2>
+          <h3 className="text-2xl md:text-4xl font-medium text-white tracking-wide">Estrutura completa para quem quer viver de música.</h3>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 text-center max-w-7xl mx-auto">
