@@ -6,7 +6,7 @@ export function ArtistsPreview() {
   const { data: artists = [] } = useArtists();
 
   const displayArtists = artists.length > 0
-    ? [...artists, ...artists, ...artists].slice(0, 10)
+    ? artists.slice(0, 10)
     : [];
 
   return (
@@ -55,13 +55,13 @@ export function ArtistsPreview() {
                   />
                 </div>
 
-                <div className="absolute bottom-0 right-0 w-[150%] h-[50%] bg-white transform origin-bottom-left -rotate-12 translate-y-full group-hover:translate-y-[150%] transition-transform duration-500 z-10 opacity-90"></div>
+                <div className="absolute bottom-0 right-0 w-[150%] h-[35%] bg-white transform origin-bottom-left -rotate-12 translate-y-full group-hover:translate-y-[150%] transition-transform duration-500 z-10 opacity-90"></div>
                 
-                <div className="absolute bottom-0 right-0 w-[150%] h-[50%] bg-[#ff4bd8] transform origin-bottom-left -rotate-12 translate-y-full group-hover:translate-y-[150%] transition-transform duration-500 delay-75 z-10 opacity-90"></div>
+                <div className="absolute bottom-0 right-0 w-[150%] h-[35%] bg-[#ff4bd8] transform origin-bottom-left -rotate-12 translate-y-full group-hover:translate-y-[150%] transition-transform duration-500 delay-75 z-10 opacity-90"></div>
 
                 <div className="absolute inset-0 bg-black/90 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] z-20 flex flex-col justify-between p-6">
                   <p className="text-white/90 text-sm font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">
-                    {artist.shortBio || artist.bio.substring(0, 80) + '...'}
+                    {artist.bio.substring(0, 120) + '...'}
                   </p>
                   <div>
                     <h3 className="text-white font-bold text-lg tracking-wider uppercase mb-1">{artist.name}</h3>
