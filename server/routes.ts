@@ -125,16 +125,6 @@ const seedArtists: InsertArtist[] = [
     contact: null,
   },
   {
-    slug: "banda-flor-da-pele",
-    name: "Banda Flor da Pele",
-    genre: "FORRÓ",
-    shortBio: "Em breve com novidades. Fique ligado!",
-    image: "/images/artists/banda-flor-da-pele.png",
-    bio: "Banda Flor da Pele está em fase de preparação para novos projetos. Em breve, mais novidades sobre este talento do time IGAPÓ MUSIC.",
-    latestRelease: null,
-    contact: null,
-  },
-  {
     slug: "ze-lord",
     name: "Zé Lord",
     genre: "FORRÓ",
