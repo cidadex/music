@@ -6,6 +6,7 @@ import { Releases } from "@/components/home/Releases";
 import { Cta } from "@/components/home/Cta";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { WhatsappFloat } from "@/components/layout/WhatsappFloat";
 
 export default function Home() {
   return (
@@ -62,6 +63,7 @@ export default function Home() {
         <Cta />
       </main>
       <Footer />
+      <WhatsappFloat />
     </div>
   );
 }

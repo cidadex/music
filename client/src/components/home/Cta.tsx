@@ -36,14 +36,9 @@ export function Cta() {
           className="flex flex-col items-center gap-6"
         >
           <span className="text-sm font-bold tracking-[0.2em] uppercase text-white/80">O próximo passo começa agora.</span>
-          <div className="flex flex-col md:flex-row gap-4">
-            <a href="https://wa.me/5581982157661" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-5 bg-[#a1f65e] text-[#0b0c10] font-black text-lg md:text-xl uppercase tracking-widest rounded-sm hover:scale-110 hover:bg-white transition-all shadow-[0_0_40px_rgba(161,246,94,0.6)] animate-pulse hover:animate-none">
-              Fale conosco!
-            </a>
-            <a href="https://wa.me/5581982157661" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-5 bg-white text-[#0b0c10] font-black text-lg md:text-xl uppercase tracking-widest rounded-sm hover:scale-110 hover:bg-[#63c7ff] transition-all shadow-[0_0_40px_rgba(255,255,255,0.4)]">
-              Chamar no WhatsApp
-            </a>
-          </div>
+          <a href="https://wa.me/5581982157661" target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-5 bg-[#a1f65e] text-[#0b0c10] font-black text-lg md:text-xl uppercase tracking-widest rounded-sm hover:scale-110 hover:bg-white transition-all shadow-[0_0_40px_rgba(161,246,94,0.6)] animate-pulse hover:animate-none">
+            Fale conosco!
+          </a>
         </motion.div>
       </div>
     </section>
