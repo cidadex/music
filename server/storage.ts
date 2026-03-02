@@ -16,7 +16,7 @@ export interface IStorage {
 
 export class DatabaseStorage implements IStorage {
   async getArtists(): Promise<Artist[]> {
-    return db.select().from(artists);
+    return db.select().from(artists).orderBy(artists.id);
   }
 
   async getArtistBySlug(slug: string): Promise<Artist | undefined> {

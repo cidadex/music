@@ -55,44 +55,94 @@ async function fetchInstagramPosts(): Promise<InstagramPost[]> {
 
 const seedArtists: InsertArtist[] = [
   {
-    slug: "aldair-playboy",
-    name: "Aldair Playboy",
-    genre: "BREGAFUNK",
-    shortBio: "Dono do hit 'Amor Falso' e um dos principais nomes do Brega Funk",
-    image: "/images/artist_1.jpg",
-    bio: "Aldair Playboy é natural da Paraíba. O cantor de 26 anos iniciou sua carreira musical em 2010. Apesar de todas as dificuldades enfrentadas no início, o artista conseguiu se destacar no movimento que ficou conhecido como 'Batidão'.",
-    latestRelease: "Pra Ouvir No Paredão",
-    contact: "johnproducoes@hotmail.com",
+    slug: "embaixadoras-do-brega",
+    name: "Embaixadoras do Brega",
+    genre: "BREGA",
+    shortBio: "A dupla feminina que é referência no brega nacional.",
+    image: "/images/artists/embaixadoras-do-brega.png",
+    bio: "Embaixadoras do Brega são a dupla que representa a força feminina no brega brasileiro. Com energia contagiante e repertório que mistura tradição e modernidade, elas conquistam palcos por todo o Brasil.",
+    latestRelease: null,
+    contact: null,
   },
   {
-    slug: "raffa-torres",
-    name: "Raffa Torres",
-    genre: "SERTANEJO",
-    shortBio: "Um dos maiores compositores do Brasil e hitmaker.",
-    image: "/images/artist_2.jpg",
-    bio: "Raffa Torres é um dos maiores compositores do Brasil, dono de hits gigantes na voz de vários artistas e com carreira solo em ascensão.",
-    latestRelease: "Casais Trocados",
-    contact: "contato@raffatorres.com.br",
+    slug: "os-homens-do-forro",
+    name: "Os Homens do Forró",
+    genre: "FORRÓ",
+    shortBio: "A potência do forró com tradição e energia no palco.",
+    image: "/images/artists/os-homens-do-forro.png",
+    bio: "Os Homens do Forró trazem a autenticidade e a energia do forró raiz com arranjos modernos. Uma banda que é referência no gênero e arrasta multidões por onde passa.",
+    latestRelease: null,
+    contact: null,
   },
   {
-    slug: "karenzinha",
-    name: "Karenzinha",
-    genre: "PAGODE",
-    shortBio: "A nova voz do pagode com energia lá em cima.",
-    image: "/images/artist_3.jpg",
-    bio: "Com ela tudo é mais gostoso no pagode, conheça Karenzinha.",
-    latestRelease: "Single Novo",
-    contact: "contato@karenzinha.com.br",
+    slug: "forro-pra-curtir",
+    name: "Forró Pra Curtir",
+    genre: "FORRÓ",
+    shortBio: "Forró animado pra curtir e dançar sem parar.",
+    image: "/images/artists/forro-pra-curtir.png",
+    bio: "Forró Pra Curtir entrega exatamente o que o nome promete: forró de qualidade, com músicas envolventes e energia que não deixa ninguém parado. Um projeto feito pra festa.",
+    latestRelease: null,
+    contact: null,
   },
   {
-    slug: "cena-trap",
-    name: "Cena Trap",
-    genre: "TRAP",
-    shortBio: "A força e a rima do trap nordestino.",
-    image: "/images/artist_4.jpg",
-    bio: "Cena trap do nordeste ganha destaque com os novos sons.",
-    latestRelease: "Trap Vol 1",
-    contact: "trap@igapo.com.br",
+    slug: "pau-no-xote",
+    name: "Pau No Xote",
+    genre: "FORRÓ",
+    shortBio: "Xote raiz com a pegada que só eles têm.",
+    image: "/images/artists/pau-no-xote.png",
+    bio: "Pau No Xote é sinônimo de xote autêntico e animado. Com estilo próprio e presença de palco marcante, a banda leva alegria e tradição nordestina por onde passa.",
+    latestRelease: null,
+    contact: null,
+  },
+  {
+    slug: "daniel-mello",
+    name: "Daniel Mello",
+    genre: "FORRÓ",
+    shortBio: "Voz marcante e presença de palco inconfundível.",
+    image: "/images/artists/daniel-mello.png",
+    bio: "Daniel Mello é um artista que une talento vocal e carisma no palco. Com um repertório que transita entre o forró e ritmos populares, ele conquista o público com sua autenticidade.",
+    latestRelease: null,
+    contact: null,
+  },
+  {
+    slug: "ricardo-franca",
+    name: "Ricardo França",
+    genre: "FORRÓ",
+    shortBio: "Carisma e voz potente que encantam o público.",
+    image: "/images/artists/ricardo-franca.png",
+    bio: "Ricardo França é um dos nomes em ascensão no cenário musical. Com voz potente e estilo único, ele leva sua música a cada vez mais fãs em todo o Brasil.",
+    latestRelease: null,
+    contact: null,
+  },
+  {
+    slug: "bruninho-diferente",
+    name: "Bruninho Diferente",
+    genre: "FORRÓ",
+    shortBio: "O diferente que faz a diferença no forró.",
+    image: "/images/artists/bruninho-diferente.png",
+    bio: "Bruninho Diferente faz jus ao nome: um artista que traz uma pegada única ao forró, com sua sanfona e energia incomparável. Talento que se destaca em cada apresentação.",
+    latestRelease: null,
+    contact: null,
+  },
+  {
+    slug: "banda-flor-da-pele",
+    name: "Banda Flor da Pele",
+    genre: "FORRÓ",
+    shortBio: "Em breve com novidades. Fique ligado!",
+    image: "/images/artists/banda-flor-da-pele.png",
+    bio: "Banda Flor da Pele está em fase de preparação para novos projetos. Em breve, mais novidades sobre este talento do time IGAPÓ MUSIC.",
+    latestRelease: null,
+    contact: null,
+  },
+  {
+    slug: "ze-lord",
+    name: "Zé Lord",
+    genre: "FORRÓ",
+    shortBio: "Ritmo, percussão e alma nordestina.",
+    image: "/images/artists/ze-lord.png",
+    bio: "Zé Lord é um artista que carrega a essência do nordeste em cada batida. Com talento na percussão e presença marcante, ele é uma das apostas do time IGAPÓ MUSIC.",
+    latestRelease: null,
+    contact: null,
   },
 ];
 
@@ -136,7 +186,12 @@ export async function registerRoutes(
     res.status(201).json(msg);
   });
 
-  app.post("/api/admin/seed", async (_req, res) => {
+  app.post("/api/admin/seed", async (req, res) => {
+    const adminKey = process.env.ADMIN_SECRET;
+    const providedKey = req.headers["x-admin-key"] || req.body?.adminKey;
+    if (!adminKey || providedKey !== adminKey) {
+      return res.status(401).json({ message: "Não autorizado" });
+    }
     try {
       await storage.clearArtists();
       await storage.clearNews();
@@ -158,7 +213,12 @@ export async function registerRoutes(
     }
   });
 
-  app.post("/api/admin/clear", async (_req, res) => {
+  app.post("/api/admin/clear", async (req, res) => {
+    const adminKey = process.env.ADMIN_SECRET;
+    const providedKey = req.headers["x-admin-key"] || req.body?.adminKey;
+    if (!adminKey || providedKey !== adminKey) {
+      return res.status(401).json({ message: "Não autorizado" });
+    }
     try {
       await storage.clearArtists();
       await storage.clearNews();
