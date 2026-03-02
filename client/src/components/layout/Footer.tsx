@@ -19,6 +19,15 @@ export function Footer() {
   return (
     <footer id="contato" className="bg-[#0b0c10] pt-16 pb-8 border-t border-gray-900 text-white">
       <div className="container mx-auto px-4 text-center">
+        <div className="flex flex-col items-center mb-12">
+          <h3 className="text-[#ff4bd8] text-2xl md:text-3xl font-black uppercase tracking-widest mb-4">
+            Fale Conosco
+          </h3>
+          <a href="https://wa.me/5581982157661" target="_blank" rel="noopener noreferrer" className="text-2xl md:text-3xl font-bold hover:text-[#a1f65e] transition-colors">
+            (81) 9.8215-7661
+          </a>
+        </div>
+
         <h3 className="text-[#ff4bd8] text-2xl md:text-3xl font-black uppercase tracking-widest mb-2">
           Siga a gente
         </h3>
