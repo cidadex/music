@@ -40,12 +40,12 @@ export function ArtistsPreview() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 bg-[#0b0c10] p-[2px] gap-[2px] mx-auto max-w-7xl mb-16 shadow-2xl relative">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 bg-[#0b0c10] p-[2px] gap-[2px] mx-auto max-w-7xl mb-16 shadow-2xl relative">
           
           <div className="absolute -inset-4 border-2 border-[#0b0c10] -z-10 hidden md:block"></div>
           {displayArtists.map((artist, i) => (
             <Link key={i} href={`/artists/${artist.slug}`}>
-              <div className="relative aspect-square sm:aspect-[4/5] bg-black overflow-hidden group cursor-pointer" data-testid={`card-artist-preview-${i}`}>
+              <div className="relative aspect-square bg-black overflow-hidden group cursor-pointer" data-testid={`card-artist-preview-${i}`}>
                 
                 <div className="absolute inset-0 overflow-hidden">
                   <img 
@@ -55,10 +55,6 @@ export function ArtistsPreview() {
                   />
                 </div>
 
-                <div className="absolute bottom-0 right-0 w-[150%] h-[20%] bg-white transform origin-bottom-left -rotate-12 translate-y-full group-hover:translate-y-[150%] transition-transform duration-500 z-10 opacity-90"></div>
-                
-                <div className="absolute bottom-0 right-0 w-[150%] h-[20%] bg-[#ff4bd8] transform origin-bottom-left -rotate-12 translate-y-full group-hover:translate-y-[150%] transition-transform duration-500 delay-75 z-10 opacity-90"></div>
-
                 <div className="absolute inset-0 bg-black/90 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] z-20 flex flex-col justify-between p-6">
                   <p className="text-white/90 text-sm font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">
                     {artist.bio.substring(0, 120) + '...'}
@@ -67,11 +63,6 @@ export function ArtistsPreview() {
                     <h3 className="text-white font-bold text-lg tracking-wider uppercase mb-1">{artist.name}</h3>
                     <span className="text-[#a1f65e] text-xs font-bold tracking-widest uppercase">{artist.genre || 'ARTISTA'}</span>
                   </div>
-                </div>
-
-                <div className="absolute bottom-0 left-0 p-4 z-10 group-hover:opacity-0 transition-opacity duration-300 w-full text-left bg-gradient-to-t from-black/80 to-transparent">
-                  <h3 className="text-white font-bold text-base md:text-lg tracking-wider uppercase drop-shadow-lg" data-testid={`text-artist-name-${i}`}>{artist.name}</h3>
-                  <span className="text-[#a1f65e] text-[10px] font-bold tracking-widest uppercase drop-shadow-md">{artist.genre || 'ARTISTA'}</span>
                 </div>
               </div>
             </Link>
