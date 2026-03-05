@@ -46,7 +46,6 @@ export function ArtistsPreview() {
           {displayArtists.map((artist, i) => (
             <Link key={i} href={`/artists/${artist.slug}`}>
               <div className="relative aspect-square bg-black overflow-hidden group cursor-pointer" data-testid={`card-artist-preview-${i}`}>
-                
                 <div className="absolute inset-0 overflow-hidden">
                   <img 
                     src={artist.image} 
@@ -54,15 +53,8 @@ export function ArtistsPreview() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
-
-                <div className="absolute inset-0 bg-black/90 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] z-20 flex flex-col justify-between p-6">
-                  <p className="text-white/90 text-sm font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">
-                    {artist.bio.substring(0, 120) + '...'}
-                  </p>
-                  <div>
-                    <h3 className="text-white font-bold text-lg tracking-wider uppercase mb-1">{artist.name}</h3>
-                    <span className="text-[#a1f65e] text-xs font-bold tracking-widest uppercase">{artist.genre || 'ARTISTA'}</span>
-                  </div>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                  <h3 className="text-white font-bold text-sm md:text-base tracking-wider uppercase">{artist.name}</h3>
                 </div>
               </div>
             </Link>

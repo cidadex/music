@@ -83,17 +83,13 @@ export default function ArtistDetail() {
                   <a href="#" className="px-6 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,75,216,0.4)] hover:shadow-[0_0_25px_rgba(255,75,216,0.6)]" data-testid="button-listen">
                     <Play size={18} fill="currentColor" /> Ouvir Lançamento
                   </a>
-                  <div className="flex gap-3 justify-center">
-                    <a href="#" className="w-12 h-12 rounded-lg bg-card border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-all">
-                      <Instagram size={20} />
-                    </a>
-                    <a href="#" className="w-12 h-12 rounded-lg bg-card border border-border flex items-center justify-center text-foreground hover:text-red-500 hover:border-red-500 transition-all">
-                      <Youtube size={20} />
-                    </a>
-                    <a href="#" className="w-12 h-12 rounded-lg bg-card border border-border flex items-center justify-center text-foreground hover:text-green-500 hover:border-green-500 transition-all">
-                      <Music size={20} />
-                    </a>
-                  </div>
+                  {artist.contact && artist.contact.includes('instagram') && (
+                    <div className="flex gap-3 justify-center">
+                      <a href={artist.contact} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-lg bg-card border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-all" data-testid="link-instagram">
+                        <Instagram size={20} />
+                      </a>
+                    </div>
+                  )}
                 </motion.div>
               </div>
             </div>
