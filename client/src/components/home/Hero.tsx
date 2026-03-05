@@ -3,36 +3,19 @@ import { motion } from "framer-motion";
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0b0c10]">
-      {/* Dynamic Modern Background */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        {/* Animated Gradient Orbs */}
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-[#ff4bd8]/20 rounded-full blur-[100px] mix-blend-screen"
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.5, 1],
-            x: [0, -60, 0],
-            y: [0, 50, 0]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-1/4 right-1/4 w-[45vw] h-[45vw] bg-[#63c7ff]/20 rounded-full blur-[120px] mix-blend-screen"
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.1, 1],
-            x: [0, 30, 0],
-            y: [0, 40, 0]
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] bg-[#a1f65e]/10 rounded-full blur-[150px] mix-blend-screen"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-60"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay gradient for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0c10]/50 via-transparent to-[#0b0c10]/80" />
       </div>
 
       {/* Modern Grid Pattern overlay */}
