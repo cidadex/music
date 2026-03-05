@@ -30,13 +30,6 @@ export function Releases() {
                     alt="Release Cover" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" 
                   />
-                  <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none p-6 bg-black/20">
-                     <h4 className="text-4xl md:text-5xl lg:text-6xl italic font-bold text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] text-center leading-none">
-                       {(featuredArtist.latestRelease || '').split(' ').map((word: string, i: number) => (
-                         <span key={i} className="block">{word}</span>
-                       ))}
-                     </h4>
-                  </div>
                 </div>
               )}
             </div>
