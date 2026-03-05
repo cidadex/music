@@ -49,7 +49,7 @@ export function Releases() {
                     <h5 className="text-xl md:text-2xl font-bold text-[#ff4bd8] mb-6 leading-tight uppercase tracking-wide border-b border-gray-800 pb-4">
                       {news.title}
                     </h5>
-                    <div className="text-xs md:text-sm text-gray-400 leading-relaxed space-y-3 columns-1 md:columns-2 gap-8">
+                    <div className="text-xs md:text-sm text-gray-400 leading-relaxed space-y-3 columns-1 md:columns-2 gap-8 text-justify">
                       {featuredArtist?.bio.split('\n\n').map((paragraph, idx) => (
                         <p key={idx} className="whitespace-pre-wrap">{paragraph}</p>
                       ))}
