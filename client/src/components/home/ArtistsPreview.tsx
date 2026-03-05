@@ -53,8 +53,8 @@ export function ArtistsPreview() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)]">
-                  <h3 className="text-white font-bold text-sm md:text-base tracking-wider uppercase">{artist.name}</h3>
+                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <h3 className="text-white font-bold text-sm md:text-lg tracking-wider uppercase text-center px-4">{artist.name}</h3>
                 </div>
               </div>
             </Link>
