@@ -57,14 +57,17 @@ export function Releases() {
                 Posts recentes
               </h4>
               {newsItems.map((news, i) => (
-                <a key={news.id} href="#" className="block border-b border-gray-800 pb-6 group" data-testid={`link-news-${i}`}>
-                  <h5 className="text-base md:text-lg font-medium text-gray-300 group-hover:text-[#63c7ff] transition-colors mb-3 leading-relaxed pr-4">
+                <div key={news.id} className="block border-b border-gray-800 pb-6" data-testid={`text-news-${i}`}>
+                  <h5 className="text-base md:text-lg font-bold text-[#63c7ff] mb-3 leading-relaxed pr-4 uppercase tracking-wide">
                     {news.title}
                   </h5>
+                  <p className="text-sm md:text-base text-gray-400 mb-4 leading-relaxed whitespace-pre-wrap">
+                    {featuredArtist?.bio}
+                  </p>
                   <span className="text-xs md:text-sm font-medium text-gray-500 block tracking-wide uppercase">
                     {news.date}
                   </span>
-                </a>
+                </div>
               ))}
             </div>
           </div>
